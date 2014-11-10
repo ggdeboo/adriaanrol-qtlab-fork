@@ -22,3 +22,4 @@ if [[ "$_ipython" ]]; then
         ipython --gui=gtk -i $basedir/source/qtlab_shell.py -- "$@"
     fi
 fi
+
