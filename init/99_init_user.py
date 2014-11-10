@@ -33,3 +33,5 @@ if qt.config['ipython_logfile'] not in (None, ''):
     _ip = get_ipython()
     _ip.IP.logger.logstart(logfname=qt.config['ipython_logfile'], logmode='append')
 
+
+
