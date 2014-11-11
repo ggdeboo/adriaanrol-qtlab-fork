@@ -103,8 +103,10 @@ def usleep(usec):
 def get_ipython():
     import IPython
     if ipython_is_newer((0, 11)):
-        return IPython.get_ipython()
+        # return IPython.get_ipython() # bug depending on iPython version which to use, build in robust version check 
+        return IPython.core.ipapi.get()
     else:
+        print 'IPython.ipapi.get()'
         return IPython.ipapi.get()
 
 def get_traceback():
