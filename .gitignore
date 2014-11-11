@@ -1,6 +1,7 @@
-.gitignore
 *.pyc
 qtlab.log
 qtlab.cfg
+qtlab.lock
+gui_client.cfg
 data
 tmp
