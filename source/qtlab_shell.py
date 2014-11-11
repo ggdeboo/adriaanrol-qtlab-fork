@@ -58,6 +58,7 @@ def show_start_help():
 def do_start():
     basedir = os.path.split(os.path.dirname(sys.argv[0]))[0]
     sys.path.append(os.path.abspath(os.path.join(basedir, 'source')))
+    PycQEDdir = os.path.join(basedir,os.pardir)
 
     ignorelist = []
     i = 1
@@ -79,7 +80,7 @@ def do_start():
             return []
         i += 1
 
-    filelist = get_shell_files(os.path.join(basedir, 'init'), ignorelist)
+    filelist = get_shell_files(os.path.join(PycQEDdir, 'init'), ignorelist)
     return filelist
 
 if __name__ == '__main__':
