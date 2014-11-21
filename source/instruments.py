@@ -61,6 +61,28 @@ def _set_user_insdir():
         sys.path.insert(idx, absdir)
         return absdir
 
+def _set_user_instrument_directories():
+    '''
+    Setting directory for user-specific instruments.
+    For this config['user_instrument_directories'] needs to be defined.
+    Converts relative paths to absolute paths.
+    '''
+    if _config['user_instrument_directories']!=None:
+        insdir_list = []
+        for dir in _config['user_instrument_directories']:
+            dir = os.path.join(_config['PycQEDdir'],dir)
+            if not os.path.isdir(dir):
+                logging.warning(__name__ + ' : "%s" is not a valid path for user_insdir, removing from user instrument directories.' % dir)
+            else:
+                absdir = os.path.abspath(dir)
+                insdir_list.append(absdir)
+        _config['user_instrument_directories'] = insdir_list
+        return insdir_list
+
+    else:
+        return None
+
+
 def _get_driver_module(name, do_reload=False):
 
     if name in sys.modules and not do_reload:
@@ -192,26 +214,31 @@ class Instruments(SharedGObject):
             name, ext = os.path.splitext(fn)
             if ext == '.py' and name != "__init__" and name[0] != '_':
                 ret.append(name)
-
-        if _user_insdir is not None:
-            filelist = os.listdir(_user_insdir)
+        if _user_instrument_directories is not None:
+            filelist = []
+            for user_insdir in _user_instrument_directories:
+                filelist.extend(  os.listdir(user_insdir))
             for path_fn in filelist:
                 path, fn = os.path.split(path_fn)
                 name, ext = os.path.splitext(fn)
                 if ext == '.py' and name != "__init__" and name[0] != '_' and not ret.count(name) > 0:
                     ret.append(name)
-
         ret.sort()
         return ret
 
     def type_exists(self, typename):
-        driverfn = os.path.join(_insdir, '%s.py' % typename)
-        if os.path.exists(driverfn):
-            return True
-        if _user_insdir is None:
-            return False
-        driverfn = os.path.join(_user_insdir, '%s.py' % typename)
-        return os.path.exists(driverfn)
+        #Still need to edit this to be compatible with multiple instrument directories
+        if _user_instrument_directories != None:
+            for user_insdir in _user_instrument_directories:
+                driverfn = os.path.join(user_insdir, '%s.py' % typename)
+                if os.path.exists(driverfn):
+                    return os.path.exists(driverfn)
+        else:
+            driverfn = os.path.join(_insdir, '%s.py' % typename)
+            if os.path.exists(driverfn):
+                return True
+        return False
+
 
     def get_type_arguments(self, typename):
         '''
@@ -414,6 +441,7 @@ class Instruments(SharedGObject):
 _config = get_config()
 _insdir = _set_insdir()
 _user_insdir = _set_user_insdir()
+_user_instrument_directories = _set_user_instrument_directories()
 
 _instruments = None
 def get_instruments():
