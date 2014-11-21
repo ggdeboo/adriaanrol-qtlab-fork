@@ -284,7 +284,7 @@ The following options are available:
     startdir        - path where you like QT lab to start,
                       i.e. your scripts folder.
     startscript     - script file you wish to run when QT lab starts
-    user_insdir     - location where you store your user-specific
+    user_instrument_directories     - list of relative folder locations where you store your user-specific
                     - (virtual) instrument drivers.
 
 It is good practice to put any user specific scripts and modules in a folder

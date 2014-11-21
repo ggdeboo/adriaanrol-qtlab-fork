@@ -46,7 +46,7 @@ config['scriptdirs'] = [
 ## This sets a user instrument directory
 ## Any instrument drivers placed here will take
 ## preference over the general instrument drivers
-#config['user_insdir'] = 'd:/instruments'
+#config['user_instrument_directories'] = ['instruments']
 
 ## For adding additional folders to the 'systm path'
 ## so python can find your modules

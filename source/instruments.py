@@ -35,32 +35,6 @@ def _set_insdir():
     sys.path.append(dir)
     return dir
 
-def _set_user_insdir():
-    '''
-    Setting directory for user-specific instruments.
-    For this config['user_insdir'] needs to be defined.
-    '''
-
-    dir = _config['user_insdir']
-
-    if dir is None:
-        return None
-
-    if not os.path.isdir(dir):
-        _config['user_insdir'] = None
-        logging.warning(__name__ + ' : "%s" is not a valid path for user_insdir, setting to None' % dir)
-        return None
-
-    absdir = os.path.abspath(dir)
-    _config['user_insdir'] = absdir
-
-    if sys.path.count(absdir) != 0:
-        return absdir
-    else:
-        idx = sys.path.index(_insdir)
-        sys.path.insert(idx, absdir)
-        return absdir
-
 def _set_user_instrument_directories():
     '''
     Setting directory for user-specific instruments.
@@ -72,7 +46,7 @@ def _set_user_instrument_directories():
         for dir in _config['user_instrument_directories']:
             dir = os.path.join(_config['PycQEDdir'],dir)
             if not os.path.isdir(dir):
-                logging.warning(__name__ + ' : "%s" is not a valid path for user_insdir, removing from user instrument directories.' % dir)
+                logging.warning(__name__ + ' : "%s" is not a valid path, removing from user instrument directories.' % dir)
             else:
                 absdir = os.path.abspath(dir)
                 insdir_list.append(absdir)
@@ -440,7 +414,6 @@ class Instruments(SharedGObject):
 
 _config = get_config()
 _insdir = _set_insdir()
-_user_insdir = _set_user_insdir()
 _user_instrument_directories = _set_user_instrument_directories()
 
 _instruments = None
