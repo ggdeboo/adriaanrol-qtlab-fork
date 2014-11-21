@@ -50,6 +50,7 @@ def _set_user_instrument_directories():
             else:
                 absdir = os.path.abspath(dir)
                 insdir_list.append(absdir)
+                sys.path.append(absdir)
         _config['user_instrument_directories'] = insdir_list
         return insdir_list
 
@@ -59,6 +60,7 @@ def _set_user_instrument_directories():
 
 def _get_driver_module(name, do_reload=False):
 
+    print name
     if name in sys.modules and not do_reload:
         return sys.modules[name]
 
@@ -282,8 +284,10 @@ class Instruments(SharedGObject):
 
         # Set VISA provider
         visa_driver = kwargs.get('visa', 'pyvisa')
-        import visa
-        visa.set_visa(visa_driver)
+        dummy_instrument = kwargs.pop('dummy_instrument', False) #Dummy instruments can be loaded without visa for analysis computers
+        if dummy_instrument ==False:
+            import visa
+            visa.set_visa(visa_driver)
 
         module = _get_driver_module(instype)
         if module is None:
@@ -413,8 +417,8 @@ class Instruments(SharedGObject):
         self.emit('instrument-changed', sender.get_name(), changes)
 
 _config = get_config()
-_insdir = _set_insdir()
 _user_instrument_directories = _set_user_instrument_directories()
+_insdir = _set_insdir() #Order of user instrument dir and instrument dir is important because it sets the sys.path order, this way user insdirs take precedence over the default instruments
 
 _instruments = None
 def get_instruments():
