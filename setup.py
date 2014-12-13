@@ -5,5 +5,5 @@ setup(name='qtlab',
     description='Python based measurement environment',
     url='https://github.com/AdriaanRol/test_pip_installer',
     packages= find_packages(),
-    licence = 'GNU General Public License 2',
+    license = 'GNU General Public License 2',
 )
