@@ -56,7 +56,6 @@ def show_start_help():
         ip.magic('Exit')
 
 def do_start():
-    basedir = os.path.split(os.path.dirname(sys.argv[0]))[0]
     basedir=os.getcwd()
     print basedir
     sys.path.append(os.path.abspath(os.path.join(basedir, 'source')))
@@ -84,7 +83,7 @@ def do_start():
     filelist = get_shell_files(os.path.join(basedir, 'init'), ignorelist)
     return filelist
 
-def run():
+def start():
     print 'Starting QT Lab environment...'
     filelist = do_start()
     for (dir, name) in filelist:
@@ -101,5 +100,5 @@ def run():
         pass
 
 if __name__ == '__main__':
-    run()
+    start()
 

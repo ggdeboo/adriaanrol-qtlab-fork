@@ -23,11 +23,10 @@ import types
 import logging
 import numpy as np
 
-from lib.config import get_config
+from qtlab.source.lib.config import get_config
 config = get_config()
-from lib.namedlist import NamedList
-from lib.network.object_sharer import cache_result
-import plot
+from qtlab.source.lib.namedlist import NamedList
+from qtlab.source.lib.network.object_sharer import cache_result
 
 import gnuplotpipe
 
@@ -167,7 +166,7 @@ class _QTGnuPlot():
         cmd = self.create_command(name, val, **kwargs)
         if cmd is not None and cmd != '':
             self.cmd(cmd)
-        return plot.Plot.set_property(self, name, val, update=update)
+        return self._gnuplot.Plot.set_property(self, name, val, update=update)
 
     def get_commands(self):
         '''Get commands for the current plot properties.'''
@@ -187,7 +186,7 @@ class _QTGnuPlot():
     def clear(self):
         '''Clear the plot.'''
         self.cmd('clear')
-        plot.Plot.clear(self)
+        self._gnuplot.Plot.clear(self)
 
     def quit(self):
         self.cmd('quit')

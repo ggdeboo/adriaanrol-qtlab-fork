@@ -1,7 +1,6 @@
 # Global namespace
 
 import os
-import sys
 from qtflow import get_flowcontrol
 from instruments import get_instruments
 from lib import config as _config

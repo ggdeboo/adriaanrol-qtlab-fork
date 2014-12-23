@@ -18,7 +18,6 @@
 
 import gobject
 import logging
-import os
 import time
 import types
 import numpy
@@ -791,4 +790,4 @@ def replot_all():
 if config.get('plot_type', 'gnuplot') == 'matplotlib':
     from plot_engines.qtmatplotlib import Plot2D, Plot3D
 else:
-    from plot_engines.qtgnuplot import Plot2D, Plot3D, plot_file
+    from plot_engines.qtgnuplot import Plot2D, Plot3D
