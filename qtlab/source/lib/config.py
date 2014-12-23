@@ -203,7 +203,7 @@ def create_config(filename):
     return _config
 
 _execdir = os.getcwd()
-_PycQEDdir = os.path.join(_execdir,os.pardir)
+_PycQEDdir = _execdir
 
 def get_execdir():
     '''Get work directory we started in.'''

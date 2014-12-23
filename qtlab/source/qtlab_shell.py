@@ -57,8 +57,9 @@ def show_start_help():
 
 def do_start():
     basedir = os.path.split(os.path.dirname(sys.argv[0]))[0]
+    basedir=os.getcwd()
+    print basedir
     sys.path.append(os.path.abspath(os.path.join(basedir, 'source')))
-    PycQEDdir = os.path.join(basedir,os.pardir)
 
     ignorelist = []
     i = 1
@@ -80,10 +81,10 @@ def do_start():
             return []
         i += 1
 
-    filelist = get_shell_files(os.path.join(PycQEDdir, 'init'), ignorelist)
+    filelist = get_shell_files(os.path.join(basedir, 'init'), ignorelist)
     return filelist
 
-if __name__ == '__main__':
+def run():
     print 'Starting QT Lab environment...'
     filelist = do_start()
     for (dir, name) in filelist:
@@ -98,4 +99,7 @@ if __name__ == '__main__':
         del filelist, dir, name, filename
     except:
         pass
+
+if __name__ == '__main__':
+    run()
 
