@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import logging
 
@@ -50,7 +50,7 @@ class WinspecAndor(Instrument):
             gr = winspec.get_grating_grooves(grbase + i + 1)
             name = winspec.get_grating_name(grbase + i + 1)
             gratings[i+1] = '%s (%s)' % (gr, name)
-            
+
         self.add_parameter('grating', type=types.IntType,
                 flags=Instrument.FLAG_GETSET,
                 format_map=gratings)
@@ -125,7 +125,7 @@ class WinspecAndor(Instrument):
             self.take_spectrum()
             qt.msleep(0.05)
         return
-        
+
     def save_spectrum(self, ret=False):
         spec = andor.get_spectrum()
         specd = qt.Data(name='spectrum')
@@ -147,7 +147,7 @@ class WinspecAndor(Instrument):
         andor.initialize()
         andor.set_read_mode(0)
         self.set_exposure_time(0.1)
-        
+
     def cooldown_andor(self):
         andor.set_cooler_on(True)
         andor.set_target_temperature(-80)
@@ -157,6 +157,6 @@ class WinspecAndor(Instrument):
         andor.set_target_temperature(0)
         andor.set_cooler_on(False)
         self.get_all()
-        
+
     def shutdown_andor(self):
         andor.shutdown()

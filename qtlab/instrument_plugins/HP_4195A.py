@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import visa
 import types
 import logging
@@ -72,7 +72,7 @@ class HP_4195A(Instrument):
         self.add_parameter('att_t1', flags=Instrument.FLAG_GETSET, type=types.IntType)
         self.add_parameter('att_r1', flags=Instrument.FLAG_GETSET, type=types.IntType)
         self.add_parameter('sweep_time', flags=Instrument.FLAG_GET, type=types.FloatType)
-        
+
         #self.add_function('set_measurement_S11')
         #self.add_function('set_measurement_S22')
         #self.add_function('set_measurement_S12')
@@ -173,7 +173,7 @@ class HP_4195A(Instrument):
 
     def set_trigger_continuous(self):
         '''
-        Puts instrument on continuous trigger. 
+        Puts instrument on continuous trigger.
 
         Input:
             None
@@ -185,7 +185,7 @@ class HP_4195A(Instrument):
 
     def set_trigger_single(self):
         '''
-        Puts instrument on single. It will wait for 
+        Puts instrument on single. It will wait for
         trigger to initiate a trace.
 
         Input:
@@ -231,7 +231,7 @@ class HP_4195A(Instrument):
         Output:
             data (int)  : list of data points
         '''
-    
+
         data = self._visainstrument.ask('FMT2;A?')
 
         d = [struct.unpack('>d', data[i:i+8])[0] for i in range(4, len(data),8)]
@@ -259,16 +259,16 @@ class HP_4195A(Instrument):
             return False
 
         sweep_time = self.get_sweep_time(query=False)
-        
+
         print 'sending trigger to network analyzer, and wait to finish'
         print 'estimated waiting time: %.2f s' % sweep_time
         self.send_trigger()
         qt.msleep(sweep_time)
-    
+
         print 'readout network analyzer'
         reply = self.read()
         reply = numpy.array(reply)
-    
+
         qt.mend()
 
         return (freqs, reply)
@@ -302,7 +302,7 @@ class HP_4195A(Instrument):
         performs a measurement and plots the data.
         '''
         freqs, reply = self.get_trace()
-        qt.plot(freqs, reply, name='netan', 
+        qt.plot(freqs, reply, name='netan',
                 xlabel='freq [Hz]', ylabel='S_ij [dB]',
                 clear=True)
 
@@ -428,7 +428,7 @@ class HP_4195A(Instrument):
 #            None
 #        '''
 #        self._visainstrument.write('SCT2')
-#    
+#
 #    def set_format_linm(self):
 #        '''
 #        Set output format display to 'linear magnitude'.
@@ -472,7 +472,7 @@ class HP_4195A(Instrument):
             None
         '''
         self._visainstrument.write('PORT2')
-    
+
     def set_port3(self):
         '''
         Set R1/R2 in NA
@@ -482,7 +482,7 @@ class HP_4195A(Instrument):
             None
         '''
         self._visainstrument.write('PORT3')
-    
+
     def set_port4(self):
         '''
         Set T1/R2 in NA
@@ -492,7 +492,7 @@ class HP_4195A(Instrument):
             None
         '''
         self._visainstrument.write('PORT4')
-    
+
     def set_port5(self):
          '''
          Set T2/R2 in NA
@@ -502,7 +502,7 @@ class HP_4195A(Instrument):
              None
          '''
          self._visainstrument.write('PORT5')
-     
+
 
 
 ### parameters
@@ -658,7 +658,7 @@ class HP_4195A(Instrument):
             None
 
         Output:
-            freq (float) : Span frequency 
+            freq (float) : Span frequency
         '''
         return float(self._visainstrument.ask('FMT1;SPAN?'))
 
@@ -693,7 +693,7 @@ class HP_4195A(Instrument):
 
         Input:
             att (dB) : port r1 attenuator
-        
+
         Output:
             None
         '''
@@ -705,12 +705,12 @@ class HP_4195A(Instrument):
 
         Input:
             None
-        
+
         Output:
             att (dB): port r1 attenuation
         '''
         return int(float(self._visainstrument.ask('FMT1;ATR1?')))
-    
+
     def do_set_att_t1(self,att):
         '''
         Set attenuator in port t1
@@ -718,7 +718,7 @@ class HP_4195A(Instrument):
 
         Input:
             att (dB) : port t1 attenuator
-        
+
         Output:
             None
         '''
@@ -730,7 +730,7 @@ class HP_4195A(Instrument):
 
         Input:
             None
-        
+
         Output:
             att (dB): port t1 attenuation
         '''

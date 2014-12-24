@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import pyvisa.vpp43 as vpp43
 from time import sleep
@@ -57,7 +57,7 @@ class IVVI(Instrument):
         '''
         logging.info('Initializing instrument IVVI')
         Instrument.__init__(self, name, tags=['physical'])
-                
+
         # Set parameters
         self._address = address
         if numdacs % 4 == 0 and numdacs > 0:
@@ -65,8 +65,8 @@ class IVVI(Instrument):
         else:
             logging.error('Number of dacs needs to be multiple of 4')
         self.pol_num = range(self._numdacs)
-        
-        
+
+
         # Add functions
         self.add_function('reset')
         self.add_function('get_all')
@@ -85,7 +85,7 @@ class IVVI(Instrument):
             maxstep=10, stepdelay=50,
             units='mV', format='%.02f',
             tags=['sweep'])
-        
+
         self._open_serial_connection()
 
         # get_all calls are performed below (in reset or get_all)
@@ -256,7 +256,7 @@ class IVVI(Instrument):
         reply = self._send_and_read(message)
         mvoltages = self._numbers_to_mvoltages(reply)
         return mvoltages
-        
+
     def _send_and_read(self, message):
         '''
         Send <message> to the device and read answer.

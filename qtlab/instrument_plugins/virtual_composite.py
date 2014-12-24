@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 
 class virtual_composite(Instrument):
@@ -83,7 +83,7 @@ class virtual_composite(Instrument):
     def add_variable_combined(self, combined_name, info_array, **kwargs):
         '''
         Create a new variable that consists of one or more other variables
-        
+
         Input:
             combined_name (string): name of new variable
             info_array (array): array with dictionary information for variables

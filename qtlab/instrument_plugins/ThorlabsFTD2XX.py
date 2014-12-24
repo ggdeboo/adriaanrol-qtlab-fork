@@ -1,6 +1,6 @@
-# 
+#
 # Copyright (C) 2011 Martijn Schaafsma
-# 
+#
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
 # License as published by the Free Software Foundation; either
@@ -19,7 +19,7 @@ import _ftd2xx as f
 from _ftd2xx.defines import *
 from time import sleep
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import logging
 
@@ -29,7 +29,7 @@ class ThorlabsFTD2XX(Instrument):
 
     logging.info(__name__ + ' : Initializing instrument Thorlabs driver')
     Instrument.__init__(self, name, tags=['physical'])
-    
+
     # TODO: Fix when device is already initialized and driver is reloaded!!
     # Obtain handle from driver itself
 
@@ -40,7 +40,7 @@ class ThorlabsFTD2XX(Instrument):
       L = ['None']
 
     print L
-    
+
     if '83828433' in L:
       self.g = f.openEx('83828433')
     else:
@@ -51,8 +51,8 @@ class ThorlabsFTD2XX(Instrument):
         h = t['handle']
         H = h.value
         self.g = f.FTD2XX(H)
-    
-    
+
+
     self.g.setBaudRate(115200)
     self.g.setDataCharacteristics(f.defines.BITS_8, f.defines.STOP_BITS_1, f.defines.PARITY_NONE)
 
@@ -63,7 +63,7 @@ class ThorlabsFTD2XX(Instrument):
     self.g.resetDevice()
     self.g.setFlowControl(f.defines.FLOW_RTS_CTS,0,0)
     self.g.setRts()
-    
+
     # Add functions
     self.add_function('Identify')
     self.add_function ('GoHome')
@@ -78,20 +78,20 @@ class ThorlabsFTD2XX(Instrument):
 
     # Add parameters
     self.add_parameter('Position',
-      flags=Instrument.FLAG_GETSET, units='deg', minval=-720, maxval=720, type=types.FloatType)    
+      flags=Instrument.FLAG_GETSET, units='deg', minval=-720, maxval=720, type=types.FloatType)
     self.add_parameter('IsMoving',
-      flags=Instrument.FLAG_GET, type=types.BooleanType)    
-    
+      flags=Instrument.FLAG_GET, type=types.BooleanType)
+
 
     self.status = {}
     self.get_Position()
 
-    
+
 #  def __del__(self):
 #    print "Bye!!"
 #    self.g.close()
 #  Fixme: release handle
-    
+
   def Identify(self):
     self.g.write("\x23\x02\x00\x00\x50\x01")
 
@@ -100,23 +100,23 @@ class ThorlabsFTD2XX(Instrument):
 
   def Close(self):
     self.g.close()
-    
+
   def ReadBuffer(self):
     n = self.g.getQueueStatus()
     return self.g.read(n)
-    
+
   def StatusbytesToPosition(self, blist):
     ## Add stuff to analyse the statusbits and return a dict
     status = {}
-    
+
     pos = ord(blist[8]) + 256*ord(blist[9]) + 256*256*ord(blist[10]) + 256*256*256*ord(blist[11])
     status1 = ord(blist[16])
     status2 = ord(blist[17])
     status3 = ord(blist[18])
     status4 = ord(blist[19])
-    
+
     status['pos']=pos
-    
+
     if status1%2>0:
       status['CW_HW_lim'] = True
       pass
@@ -165,7 +165,7 @@ class ThorlabsFTD2XX(Instrument):
     else:
       status['Jogging_CCW'] = False
       pass
-    
+
     if status2%2>0:
       status['Connected'] = True
       pass
@@ -196,11 +196,11 @@ class ThorlabsFTD2XX(Instrument):
     else:
       status['Interlock'] = False
       pass
-    self.status = status  
+    self.status = status
     return status
-    
+
   def ReturnStatus(self):
-    return self.status  
+    return self.status
 
   def do_get_IsMoving(self):
     self.ReadBuffer()
@@ -210,18 +210,18 @@ class ThorlabsFTD2XX(Instrument):
       sleep(0.5)
     stat = (self.StatusbytesToPosition(self.ReadBuffer()))
     return (stat['Moving_CW'] or stat['Moving_CCW'])
-    
-  def do_get_Position(self):  
+
+  def do_get_Position(self):
     self.ReadBuffer()
     self.g.write('\x90\x04\x01\x00\x50\x01')
     sleep(0.1)
     while(self.g.getQueueStatus()==0): # This is dangerous!!
       sleep(0.5)
-    valold = (self.StatusbytesToPosition(self.ReadBuffer()))['pos']      
+    valold = (self.StatusbytesToPosition(self.ReadBuffer()))['pos']
     if valold >= 2147483648:
-      val = (valold-4294967296)/1920.0    
-    else:  
-      val = valold/1920.0    
+      val = (valold-4294967296)/1920.0
+    else:
+      val = valold/1920.0
     return val
 
   def do_set_Position(self,pos):
@@ -230,29 +230,29 @@ class ThorlabsFTD2XX(Instrument):
     byte2 = int(num/256)%256
     byte3 = int(num/256/256)%256
     byte4 = int(num/256/256/256)%256
-    str = '\x53\x04\x06\x00\x80\x01\x01\x00' + chr(byte1) + chr(byte2) + chr(byte3) + chr(byte4)      
+    str = '\x53\x04\x06\x00\x80\x01\x01\x00' + chr(byte1) + chr(byte2) + chr(byte3) + chr(byte4)
     self.g.write(str)
-    
+
   def MoveRelative(self,move):
     num = int(move*1920)
     byte1 = num%256
     byte2 = int(num/256)%256
     byte3 = int(num/256/256)%256
     byte4 = int(num/256/256/256)%256
-    str = '\x48\x04\x06\x00\x80\x01\x01\x00' + chr(byte1) + chr(byte2) + chr(byte3) + chr(byte4)      
+    str = '\x48\x04\x06\x00\x80\x01\x01\x00' + chr(byte1) + chr(byte2) + chr(byte3) + chr(byte4)
     self.g.write(str )
-    
+
   def StopMoving(self):
     self.g.write('\x65\x04\x01\x02\x50\x01')
-    
+
   def EnableChannel1(self):
     self.g.write('\x10\x02\x01\x01\x50\x01')
-    
+
   def DisableChannel1(self):
     self.g.write('\x10\x02\x01\x01\x50\x01')
-    
+
   def MoveJogPos(self):
     self.g.write('\x6A\x04\x01\x02\x50\x01')
-    
+
   def MoveJogNeg(self):
     self.g.write('\x6A\x04\x01\x02\x50\x01')

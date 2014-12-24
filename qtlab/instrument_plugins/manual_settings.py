@@ -1,4 +1,4 @@
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 
 class manual_settings(Instrument):

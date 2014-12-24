@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import logging
 import visa
@@ -41,22 +41,22 @@ class Fluke_PM5138A(Instrument):
 
     # Add parameters
     self.add_parameter('frequency',
-      flags=Instrument.FLAG_GETSET, units='Hz', minval=0, maxval=16000, type=types.FloatType)    
+      flags=Instrument.FLAG_GETSET, units='Hz', minval=0, maxval=16000, type=types.FloatType)
     self.add_parameter('ac_amplitude',
       flags=Instrument.FLAG_GETSET, units='V', minval=-15, maxval=25, type=types.FloatType)
     self.add_parameter('dc_amplitude',
       flags=Instrument.FLAG_GETSET, units='V', minval=-15, maxval=25, type=types.FloatType)
     self.add_parameter('dutycycle',
       flags=Instrument.FLAG_GETSET, units='pct', minval=0, maxval=100, type=types.FloatType)
-    
+
     if reset:
       self.init_default()
     self.get_all()
-    
+
 
   def _write(self, letter):
     self._visainstrument.write(letter)
-	  
+
   def _ask(self, question):
     return self._visainstrument.ask(question)
 
@@ -67,43 +67,43 @@ class Fluke_PM5138A(Instrument):
     self._write("DCOFF")
     self._write("DUTYC 50")
     self._write("SYM ON")
-	  
+
   def get_all(self):
     logging.info(__name__ + ' : get all')
     self.get_dc_amplitude()
     self.get_ac_amplitude()
     self.get_frequency()
     self.get_dutycycle()
-      
+
   def do_set_frequency(self, frequency):
     self._write("FREQ %f"%frequency )
-   
+
   def do_set_ac_amplitude(self, ac):
     self._write("AMPLT %f"%ac)
-   
+
   def do_set_dc_amplitude(self, dc):
     self._write("DCOFFS %f"%dc)
-   
+
   def do_set_dutycycle(self, dutycycle):
     self._write("DUTYC %f"%dutycycle)
-   
+
   def do_get_frequency(self):
     stringval = self._ask("FREQ?")
     v = stringval.split()[1]
     return float(v)
-   
+
   def do_get_ac_amplitude(self):
     stringval =  self._ask("AMPLT?")
     v = stringval.split()[1]
     return float(v)
-   
+
   def do_get_dc_amplitude(self):
     stringval =  self._ask("DCOFFS?")
     v = stringval.split()[1]
     return float(v)
-   
+
   def do_get_dutycycle(self):
     stringval = self._ask("DUTYC?")
     v = stringval.split()[1]
     return int(v)
-   
+

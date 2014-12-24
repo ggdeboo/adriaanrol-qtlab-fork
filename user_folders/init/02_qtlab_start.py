@@ -27,7 +27,7 @@ _parse_options()
 _cfg['qtlab'] = True
 
 import types
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 from lib.misc import exact_time, get_ipython
 from lib import temp
 from time import sleep

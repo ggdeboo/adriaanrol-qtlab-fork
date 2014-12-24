@@ -1,7 +1,7 @@
 # QTLab example instrument communicating by TCP/IP
 # Reinier Heeres, 2009
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import socket
 

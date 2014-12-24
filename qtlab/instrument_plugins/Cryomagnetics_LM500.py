@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import visa
 import types
 import logging
@@ -26,7 +26,7 @@ import time
 class Cryomagnetics_LM500(Instrument):
 
     UNITS = ('CM', 'IN', 'PERCENT', '%')
-    
+
     def __init__(self, name, address, reset=False):
         Instrument.__init__(self, name)
 
@@ -85,7 +85,7 @@ class Cryomagnetics_LM500(Instrument):
         self.get_length()
         self.get_alarmlim()
         self.get_lastval()
-        
+
     def do_get_identification(self):
         return self._visa.ask('*IDN?')
 
@@ -93,7 +93,7 @@ class Cryomagnetics_LM500(Instrument):
         params = ('length', 'alarmlim', 'lastval')
         for p in params:
             self.set_parameter_options(p, units=unit)
-            
+
     def do_get_units(self):
         ans = self._visa.ask('UNITS?')
         self._update_units(ans)
@@ -109,7 +109,7 @@ class Cryomagnetics_LM500(Instrument):
 
     def do_get_mode(self):
         return self._visa.ask('MODE?')
-        
+
     def do_set_mode(self, mode):
         self._visa.write('MODE %s' % mode)
 
@@ -124,7 +124,7 @@ class Cryomagnetics_LM500(Instrument):
         if unit.upper() != set_unit:
             logging.warning('Returned units (%s) differ from set units (%s)!',
                 unit, set_unit)
-                
+
         return float(val)
 
     def do_get_interval(self):
@@ -151,7 +151,7 @@ class Cryomagnetics_LM500(Instrument):
 
     def do_set_alarmlim(self, val):
         self._visa.write('ALARM %f' % val)
-        
+
     def do_get_alarmlim(self):
         ans = self._visa.ask('ALARM?')
         return self._check_ans_unit(ans)

@@ -18,7 +18,7 @@ import pyvisa.vpp43 as vpp43
 from time import sleep
 import types
 import logging
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 
 
 class OPTO(Instrument):

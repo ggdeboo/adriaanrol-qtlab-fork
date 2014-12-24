@@ -22,7 +22,7 @@ import time
 import sys
 import numpy as np
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import qt
 
 d = ctypes.cdll.LoadLibrary('c:/Program Files/Fianium/config files/AotfLibrary.dll')
@@ -49,9 +49,9 @@ class Fianium_AOTF(Instrument):
         (1550, 45),
         (1650, 50),
     ))
-    
+
     MAX_POWER = 16000
-    
+
     def __init__(self, name, id=0):
         Instrument.__init__(self, name, tags=['physical'])
 
@@ -74,17 +74,17 @@ class Fianium_AOTF(Instrument):
             type=types.IntType,
             units='nm',
             help='Set wavelength and optimal power')
-            
+
         self.add_function('enable')
         self._open()
         self.enable()
-        
+
         # Close AOTF before exiting QTlab
         qt.flow.register_exit_handler(self._close)
 
     def get_all(self):
         return
-        
+
     def _open(self):
         self._h = d.AotfOpen(self._id)
         if self._h == 0:
@@ -118,7 +118,7 @@ class Fianium_AOTF(Instrument):
                     break
                 time.sleep(0.002)
         return ret
-        
+
     def enable(self):
         # Enable, set gain, set wavelength 650, set power to 0
         s = 'dau en\r dau gain 0 255\r dds f 0 #650\r dds a 0 0\r'
@@ -128,7 +128,7 @@ class Fianium_AOTF(Instrument):
     def do_set_wavelength(self, wlen):
         s = 'dds f 0 #%d \r' % (wlen)
         self.send_cmd(s)
-        
+
     def do_set_power(self, pow):
         val = pow * self.MAX_POWER / 100
         s = 'dds a 0 %d \r' % (val)
@@ -139,7 +139,7 @@ class Fianium_AOTF(Instrument):
             table = self.CRYST1
         else:
             table = self.CRYST2
-            
+
         i = np.searchsorted(table[:,0], wlen)
         if i == len(table[:,0]):
             i = i - 1

@@ -19,7 +19,7 @@
 from ctypes import *
 from _Spectrum_M2i2030.errors import errors as _spcm_errors
 from _Spectrum_M2i2030.regs import regs as _spcm_regs
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import pickle
 from time import sleep, time
 import types

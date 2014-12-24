@@ -23,7 +23,7 @@
 #    10) Moet er bij inlezen data worden gecontroleerd of de dacpolarity nog klopt?
 #
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import pyvisa.vpp43 as vpp43
 from time import sleep

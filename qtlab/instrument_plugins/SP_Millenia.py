@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import visa
 import logging
@@ -55,7 +55,7 @@ class SP_Millenia(Instrument):
             self.reset()
         else:
             self.get_all()
- 
+
     # Open serial connection
     def _open_serial_connection(self):
         logging.debug(__name__ + ' : Opening serial connection')
@@ -79,10 +79,10 @@ class SP_Millenia(Instrument):
 
     def reset(self):
         pass
-        
+
     def do_get_id(self):
         return self._visa.ask('?IDN\r')
-        
+
     def do_get_power(self):
         ret = self._visa.ask('?P\r')
         m = re.search('([0123456789\.]+)W', ret)
@@ -94,10 +94,10 @@ class SP_Millenia(Instrument):
     def do_set_power(self, val):
         self._visa.write('P:%.02f\r' % val)
         return True
-        
+
     def on(self):
         self._visa.write('ON\r')
-        
+
     def off(self):
         self._visa.write('OFF\r')
 

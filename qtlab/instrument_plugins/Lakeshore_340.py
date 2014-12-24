@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import visa
 import types
 import logging
@@ -31,7 +31,7 @@ class Lakeshore_340(Instrument):
         self._address = address
         self._visa = visa.instrument(self._address)
         self._channels = ('A', 'B', 'C', 'D')
-        
+
         self.add_parameter('identification',
             flags=Instrument.FLAG_GET)
 
@@ -95,26 +95,26 @@ class Lakeshore_340(Instrument):
 
     def do_get_identification(self):
         return self._visa.ask('*IDN?')
-        
+
     def do_get_kelvin(self, channel):
         ans = self._visa.ask('KRDG? %s' % channel)
         return float(ans)
-        
+
     def do_get_sensor(self, channel):
         ans = self._visa.ask('SRDG? %s' % channel)
         return float(ans)
-        
+
     def do_get_heater_range(self):
         ans = self._visa.ask('RANGE?')
         return ans
-        
+
     def do_set_heater_range(self, val):
         self._visa.write('RANGE %d' % val)
-        
+
     def do_get_heater_output(self):
         ans = self._visa.ask('HTR?')
         return ans
-        
+
     def do_get_mode(self):
         ans = self._visa.ask('MODE?')
         return int(ans)
@@ -135,14 +135,13 @@ class Lakeshore_340(Instrument):
             return None
         fields = [float(f) for f in fields]
         return fields
-        
+
     def do_set_pid(self, val, channel):
         pass
-        
+
     def do_get_setpoint(self, channel):
         ans = self._visa.ask('SETP? %s' % channel)
         return float(ans)
-        
+
     def do_set_setpoint(self, val, channel):
         self._visa.write('SETP %s, %f' % (channel, val))
-        

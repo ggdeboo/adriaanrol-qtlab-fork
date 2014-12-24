@@ -20,7 +20,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import visa
 import types
 import logging
@@ -473,7 +473,7 @@ class Keithley_2100(Instrument):
         '''
         logging.debug('Set integration time to %s PLC' % val)
         self._set_func_par_value(mode, 'NPLC', val)
-        
+
     def do_get_nplc(self, mode=None, unit='APER'):
         '''
         Get integration time in Number of PowerLine Cycles.

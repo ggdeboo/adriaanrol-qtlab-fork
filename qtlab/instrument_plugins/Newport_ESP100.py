@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import logging
 import visa
@@ -28,10 +28,10 @@ class Newport_ESP100(Instrument):
   Usage:
     Initialize with
     <name> = instruments.create('<name>', 'Newport_ESP100', address='<COM address>, reset=<bool>')
-  
+
     TODO: - Check if there is a difference in imposing a displacement or sending the stage to a certain location
           - Add the function "move(val[mm])" and scale this guy in a virtual instrument to ps
-  
+
   '''
   def __init__(self, name, address, reset=False):
     logging.info(__name__ + ' : Initializing instrument Newport ESP100')
@@ -39,7 +39,7 @@ class Newport_ESP100(Instrument):
 
     self._address = address
     self._visainstrument = visa.instrument(self._address)
-    
+
     # Add functions
     self.add_function('init_default')
     self.add_function('define_home')
@@ -51,15 +51,15 @@ class Newport_ESP100(Instrument):
     self.add_function('move_0100mu_n')
     self.add_function('move_0010mu_n')
     self.add_function('move_0001mu_n')
-    
+
     # Add parameters
     self.add_parameter('position',tags=['sweep'],
       flags=Instrument.FLAG_GETSET, units='mm', minval=-300, maxval=300, type=types.FloatType)
     self.add_parameter('ismoving',
-      flags=Instrument.FLAG_GET, type=types.StringType)    
+      flags=Instrument.FLAG_GET, type=types.StringType)
 
     #self.init_default()
-	  
+
     if reset:
       self.init_default()
 
@@ -78,10 +78,10 @@ class Newport_ESP100(Instrument):
     self._visainstrument.write('1DH;WS\r')
     print "Finished initialization ESP100"
     self.get_position()
-	
+
   def do_get_position(self):
     return self._visainstrument.ask('1PA?\r')
-	
+
   def define_home(self, position=0.0):
     self._visainstrument.write('1DH%f;WS\r'%position)
 
@@ -98,27 +98,27 @@ class Newport_ESP100(Instrument):
   def move_0100mu_p(self):
     self._visainstrument.write('1PR+0.1')
     return self.get_position()
-  
+
   def move_0010mu_p(self):
     self._visainstrument.write('1PR+0.01')
     return self.get_position()
-  
+
   def move_0001mu_p(self):
     self._visainstrument.write('1PR+0.001')
     return self.get_position()
-	
+
   def move_1000mu_n(self):
     self._visainstrument.write('1PR-1')
     return self.get_position()
-  
+
   def move_0100mu_n(self):
     self._visainstrument.write('1PR-0.1')
     return self.get_position()
-  
+
   def move_0010mu_n(self):
     self._visainstrument.write('1PR-0.01')
     return self.get_position()
-  
+
   def move_0001mu_n(self):
     self._visainstrument.write('1PR-0.001')
     return self.get_position()

@@ -17,7 +17,7 @@
 
 import types
 from lib.dll_support import nidaq
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import qt
 
 def _get_channel(devchan):

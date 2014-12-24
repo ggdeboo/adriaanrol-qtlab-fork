@@ -17,7 +17,7 @@
 
 import pygame as p
 import os
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import logging
 import numpy
@@ -27,7 +27,7 @@ import qt
 
 class Speedlink_StrikeFX(Instrument):
     def __init__(self,name,num, instrlist,varlist,numjoy=0):
-        
+
         # Axes related parameters
         self.numdevices = num
         self.instrlist = instrlist
@@ -39,7 +39,7 @@ class Speedlink_StrikeFX(Instrument):
         # Init pygame
         p.init()
         p.joystick.init()
-        
+
         # Init joystick
         self.j = p.joystick.Joystick(numjoy)
         self.j.init()
@@ -53,7 +53,7 @@ class Speedlink_StrikeFX(Instrument):
         if self.numbuttons<12 or self.numaxes<4 or self.numhats<1:
           print "Not enough controls on joystick!!"
           raise
-        
+
         # steps
         self.step = [1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
         self.position = [1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0]
@@ -85,7 +85,7 @@ class Speedlink_StrikeFX(Instrument):
           flags=Instrument.FLAG_GETSET, minval=0.00001, maxval=100, type=types.FloatType)
         self.add_function('run')
         self.add_function('Fire')
-        
+
         # Update qtlab
         for i in range(1,num+1):
           getattr(self,'get_Axis%d_stepsize'%i)()

@@ -21,7 +21,7 @@
 import ctypes
 import numpy as np
 import time
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import logging
 import qt

@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import types
 import visa
 
@@ -23,10 +23,10 @@ class Coherent_Verdi(Instrument):
 
     def __init__(self, name, address, reset=False):
         Instrument.__init__(self, name, tags=['physical'])
-                
+
         # Set parameters
         self._address = address
-        
+
         # Add functions
         self.add_function('reset')
         self.add_function('get_all')
@@ -72,7 +72,7 @@ class Coherent_Verdi(Instrument):
         self.add_parameter('PCdiode',
             type=types.FloatType, units='W', format='%.02f',
             flags=Instrument.FLAG_GET, channels=(1,2))
-        
+
         self._visa = visa.SerialInstrument(address,
                         data_bits=8, stop_bits=1, parity=0,
                         baud_rate=19200, term_chars='\r\n')
@@ -112,7 +112,7 @@ class Coherent_Verdi(Instrument):
             return s[len(cmd):]
         else:
             return 0
-        
+
     def do_get_output_power(self):
         s = self._query('?P\r\n')
         return float(s)
@@ -120,7 +120,7 @@ class Coherent_Verdi(Instrument):
     def do_get_shutter(self):
         s = self._query('?S\r\n')
         return int(s)
-        
+
     def do_set_shutter(self, s):
         s = self._query('S = %d\r\n' % s)
         return int(s)
@@ -128,15 +128,15 @@ class Coherent_Verdi(Instrument):
     def do_get_mode(self):
         s = self._query('?M\r\n')
         return int(s)
-        
+
     def do_get_tgt_power(self):
         s = self._query('?SP\r\n')
         return float(s)
-            
+
     def do_set_tgt_power(self, p):
         self._visa.ask('P = %.04f\r\n')
         return True
-        
+
     def do_get_Tbaseplate(self):
         s = self._query('?BT\r\n')
         return float(s)
@@ -152,7 +152,7 @@ class Coherent_Verdi(Instrument):
     def do_get_THSdiode(self, channel):
         s = self._query('?D%dHST\r\n' % channel)
         return float(s)
-        
+
     def do_get_Tdiode(self, channel):
         s = self._query('?D%dT\r\n' % channel)
         return float(s)
@@ -160,7 +160,7 @@ class Coherent_Verdi(Instrument):
     def do_get_Idiode(self, channel):
         s = self._query('?D%dC\r\n' % channel)
         return float(s)
-        
+
     def do_get_Tvanadate(self, channel):
         if channel == 1:
             s = self._query('?VT\r\n')
@@ -171,7 +171,7 @@ class Coherent_Verdi(Instrument):
     def do_get_PCdiode(self, channel):
         s = self._query('?D%dPC\r\n' % channel)
         return float(s)
-        
+
     def do_get_current(self):
         s = self._query('?C\r\n')
         return float(s)

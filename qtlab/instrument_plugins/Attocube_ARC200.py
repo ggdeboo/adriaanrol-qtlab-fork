@@ -15,7 +15,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from instrument import Instrument
+from qtlab.source.instrument import Instrument
 import visa
 import types
 import logging
@@ -98,7 +98,7 @@ class Attocube_ARC200(Instrument):
         except Exception, e:
             logging.error('Failed to ask ARC200')
             return ''
-        
+
     def reset(self):
         self.write_line('resetp')
 
@@ -114,7 +114,7 @@ class Attocube_ARC200(Instrument):
             return False
 
         logging.info('Setting mode %s' % mode)
-                
+
         self.write_line('SM%d' % mode)
         self._visa.clear()
 
