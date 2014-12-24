@@ -20,7 +20,7 @@ import ctypes
 import logging
 from lib.dll_support import standa_usmc as standa
 from qtlab.source.instrument import Instrument
-import qt
+from qtlab.source import qt
 
 class Standa_USMC(Instrument):
 

@@ -112,7 +112,7 @@ class Picoharp(Instrument):
     def plot(self):
         if not self._dev:
             return
-        import qt
+        from qtlab.source import qt
         x, trace = self._dev.get_block()
         qt.plot(trace, name='picoharp', clear=True)
 

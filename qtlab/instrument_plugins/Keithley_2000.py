@@ -26,7 +26,7 @@ import types
 import logging
 import numpy
 
-import qt
+from qtlab.source import qt
 
 def bool_to_str(val):
     '''

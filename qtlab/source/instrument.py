@@ -27,7 +27,7 @@ from lib.network.object_sharer import SharedGObject, cache_result
 
 import numpy as np
 import logging
-import qt
+from qtlab.source.qtflow import get_flowcontrol
 
 from lib.config import get_config
 config = get_config()
@@ -388,7 +388,6 @@ class Instrument(SharedGObject):
                 lambda: self.get(name)))
 
         if 'listen_to' in options:
-            insset = set([])
             inshids = []
             for (ins, param) in options['listen_to']:
                 inshids.append(ins.connect('changed', \
@@ -798,7 +797,8 @@ class Instrument(SharedGObject):
             isalive = thread.isAlive
 
         while isalive():
-            qt.flow.run_mainloop(0.005)
+            flow = get_flowcontrol()
+            flow.run_mainloop(0.005)
 
         return thread.get_return_value()
 

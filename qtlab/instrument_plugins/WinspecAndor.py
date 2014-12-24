@@ -22,7 +22,7 @@ import logging
 from lib.com_support import winspec
 from lib.dll_support import andor
 
-import qt
+from qtlab.source import qt
 
 class WinspecAndor(Instrument):
 

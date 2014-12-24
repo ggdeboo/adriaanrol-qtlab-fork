@@ -25,7 +25,7 @@ from gettext import gettext as _L
 import lib.gui as gui
 
 import qtwindow
-import qt
+from qtlab.source import qt
 
 class SliderWindow(qtwindow.QTWindow):
 

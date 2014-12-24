@@ -1,4 +1,4 @@
-import qt
+from qtlab.source import qt
 import time
 
 start = time.time()

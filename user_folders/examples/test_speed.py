@@ -1,6 +1,6 @@
 # Script to test overhead of QTLab framework
 
-import qt
+from qtlab.source import qt
 import time
 
 ins = qt.instruments['dsgen']

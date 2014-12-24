@@ -23,7 +23,7 @@ import logging
 from time import sleep
 import struct
 import numpy
-import qt
+from qtlab.source import qt
 
 class HP_4195A(Instrument):
     '''

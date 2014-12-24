@@ -17,7 +17,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import logging
-import qt
+from qtlab.source import qt
 import copy
 import object_sharer as objsh
 

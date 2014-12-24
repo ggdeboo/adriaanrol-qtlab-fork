@@ -1,5 +1,5 @@
 import gobject
-import qt
+from qtlab.source import qt
 
 def measure_mon():
     print 'Measuring...'

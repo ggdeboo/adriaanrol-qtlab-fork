@@ -8,8 +8,8 @@
 # to run an example function read on.
 
 # Modules are often more convenient then scripts. In a
-# module you can define man functions that can be resued 
-# in other functions or scripts. The functions are accessed 
+# module you can define man functions that can be resued
+# in other functions or scripts. The functions are accessed
 # by first importing the module, and then call a function
 # within the module with <module>.<function>()
 # Remember that a module has its own namespace, so many
@@ -19,7 +19,7 @@
 import numpy
 from time import time,sleep
 import os
-import qt
+from qtlab.source import qt
 
 #####################################################
 # this part is to simulate some data, you can skip it
@@ -57,12 +57,12 @@ def example1(f_vec, b_vec):
     '''
     this example is exactly the same as 'basic_measure_script.py'
     but now made into a function. The main advantage is that now
-    the parameters f_vec and b_vec can be provided when calling 
+    the parameters f_vec and b_vec can be provided when calling
     the function: "measure_module.example1(vec1, vec2)", instead
-    of having to change the script. 
-   
+    of having to change the script.
+
     To run the function type in the terminal:
-   
+
     fv=numpy.arange(0,10,0.01)
     bv=numpy.arange(-5,5,0.1)
     measure_module.example1(fv, bv)
@@ -102,7 +102,7 @@ def example1(f_vec, b_vec):
 def example2(f_vec, b_vec):
     '''
     This example introduces three new features:
-    1) setting format and/or precision of data in the datafile. 
+    1) setting format and/or precision of data in the datafile.
        using 'precision' will keep the default scientific notation,
        'format' can be anything you like
         => add_coordinate(precision=<nr>)
@@ -114,7 +114,7 @@ def example2(f_vec, b_vec):
         => create_file(settings_file=False)
 
     To run the function type in the terminal:
-   
+
     fv=numpy.arange(0,10,0.01)
     bv=numpy.arange(-5,5,0.1)
     measure_module.example2(fv, bv)
@@ -139,7 +139,7 @@ def example2(f_vec, b_vec):
     data_max.add_coordinate('Bfield, ivvi dac 3 [mV]')
     data_max.add_value('resonance frequency [Hz]')
     data_max.create_file(
-            filepath=maxfilepath, 
+            filepath=maxfilepath,
             settings_file=False)
 
     plot2d = qt.Plot2D(data, name='measure2D')
@@ -179,7 +179,7 @@ def example2(f_vec, b_vec):
 def example3(x_vec=numpy.linspace(0,10,10), y_vec=numpy.linspace(0,10,50)):
     '''
     To run the function type in the terminal:
-   
+
     measure_module.example3()
     '''
 

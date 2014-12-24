@@ -22,7 +22,7 @@ from qtlab.source.instrument import Instrument
 import types
 import visa
 import pyvisa.vpp43 as vpp43
-import qt
+from qtlab.source import qt
 import logging
 import numpy
 import time

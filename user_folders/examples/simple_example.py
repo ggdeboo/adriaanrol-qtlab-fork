@@ -1,5 +1,5 @@
 import numpy as np
-import qt
+from qtlab.source import qt
 
 d = qt.Data()
 d.add_coordinate('X')

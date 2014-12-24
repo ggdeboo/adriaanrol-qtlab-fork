@@ -19,7 +19,7 @@ import time
 import gtk
 import gobject
 import logging
-import qt
+from qtlab.source import qt
 from data import Data
 
 class Measurement(gobject.GObject):

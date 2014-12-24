@@ -228,11 +228,11 @@ class FlowControl(SharedGObject):
         return self.get_status() == 'running'
 
     def get_live_plot(self):
-        import qt
+        from qtlab.source import qt
         return qt.config.get('live-plot', True)
 
     def set_live_plot(self, val):
-        import qt
+        from qtlab.source import qt
         qt.config.set('live-plot', val)
 
     def toggle_live_plot(self):
@@ -259,7 +259,7 @@ class FlowControl(SharedGObject):
         self._pause = pause
 
     def start_program(self, program, *arg_list):
-        import qt
+        from qtlab.source import qt
 
         curdir = os.getcwd()
         os.chdir(qt.config['execdir'])
@@ -314,6 +314,6 @@ def get_flowcontrol():
 def qtlab_exit():
     print "Closing QTlab..."
 
-    import qt
+    from qtlab.source import qt
     qt.flow.exit_request()
 

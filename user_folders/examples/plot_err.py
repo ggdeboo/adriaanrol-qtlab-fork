@@ -1,5 +1,5 @@
 import numpy as np
-import qt
+from qtlab.source import qt
 
 x = np.arange(-10, 10, 0.2)
 y = np.sinc(x)

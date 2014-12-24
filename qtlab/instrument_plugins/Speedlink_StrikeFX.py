@@ -23,7 +23,7 @@ import logging
 import numpy
 import visa
 import time as time
-import qt
+from qtlab.source import qt
 
 class Speedlink_StrikeFX(Instrument):
     def __init__(self,name,num, instrlist,varlist,numjoy=0):

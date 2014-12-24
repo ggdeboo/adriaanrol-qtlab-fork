@@ -18,7 +18,7 @@
 import types
 from lib.dll_support import nidaq
 from qtlab.source.instrument import Instrument
-import qt
+from qtlab.source import qt
 
 def _get_channel(devchan):
     if not '/' in devchan:

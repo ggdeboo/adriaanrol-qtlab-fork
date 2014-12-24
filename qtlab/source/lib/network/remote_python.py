@@ -18,7 +18,7 @@
 
 import logging
 from lib.network import tcpserver, tcpclient
-import qt
+from qtlab.source import qt
 
 PORT = 12000
 

@@ -40,7 +40,7 @@ in_qtlab = config.get('qtlab', False)
 from lib.network.object_sharer import SharedGObject, cache_result
 
 if in_qtlab:
-    import qt
+    from qtlab.source import qt
 
 import data
 

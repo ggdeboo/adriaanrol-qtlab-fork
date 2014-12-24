@@ -24,7 +24,7 @@ import time
 from qtlab.source.instrument import Instrument
 import types
 import logging
-import qt
+from qtlab.source import qt
 
 # Code that identifies the LCVR controller
 _guid = np.array([0x8b, 0x5b, 0x2b, 0xa2,

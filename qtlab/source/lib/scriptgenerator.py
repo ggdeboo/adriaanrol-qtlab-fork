@@ -9,7 +9,7 @@ class LoopGenerator():
 """# Measurement script automatically generated on %(date)s
 print "\\nStarting generated measurement..."
 
-import qt
+from qtlab.source import qt
 import numpy as np
 
 qt.mstart()

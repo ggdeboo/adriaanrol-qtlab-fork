@@ -188,7 +188,7 @@ class CallTimer:
         self._kwargs = kwargs
 
     def start(self):
-        import qt
+        from qtlab.source import qt
         tstart = exact_time()
 
         i = 0

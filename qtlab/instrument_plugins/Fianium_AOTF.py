@@ -23,7 +23,7 @@ import sys
 import numpy as np
 
 from qtlab.source.instrument import Instrument
-import qt
+from qtlab.source import qt
 
 d = ctypes.cdll.LoadLibrary('c:/Program Files/Fianium/config files/AotfLibrary.dll')
 

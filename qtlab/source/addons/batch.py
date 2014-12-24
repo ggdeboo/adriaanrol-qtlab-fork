@@ -2,7 +2,7 @@ import os
 import shutil
 import time
 
-import qt
+from qtlab.source import qt
 
 qtlab_dir = qt.config['execdir']
 todo_dir = os.path.join(qtlab_dir, 'batch','todo')
