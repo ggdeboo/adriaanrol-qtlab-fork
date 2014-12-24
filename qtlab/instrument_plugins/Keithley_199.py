@@ -17,7 +17,9 @@
 
 from qtlab.source.instrument import Instrument
 import types
-import visa
+from qtlab.source import visa
+
+
 
 class Keithley_199(Instrument):
 

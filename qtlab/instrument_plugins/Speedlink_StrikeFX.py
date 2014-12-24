@@ -21,7 +21,9 @@ from qtlab.source.instrument import Instrument
 import types
 import logging
 import numpy
-import visa
+from qtlab.source import visa
+
+
 import time as time
 from qtlab.source import qt
 

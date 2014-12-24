@@ -18,7 +18,9 @@
 
 from qtlab.source.instrument import Instrument
 import types
-import visa
+from qtlab.source import visa
+
+
 import logging
 import re
 

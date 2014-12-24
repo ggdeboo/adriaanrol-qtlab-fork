@@ -18,7 +18,9 @@
 
 from qtlab.source.instrument import Instrument
 from time import time, sleep
-import visa
+from qtlab.source import visa
+
+
 import types
 import logging
 

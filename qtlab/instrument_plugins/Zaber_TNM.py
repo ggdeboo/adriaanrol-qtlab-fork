@@ -20,7 +20,9 @@
 
 from qtlab.source.instrument import Instrument
 import types
-import visa
+from qtlab.source import visa
+
+
 import pyvisa.vpp43 as vpp43
 from qtlab.source import qt
 import logging

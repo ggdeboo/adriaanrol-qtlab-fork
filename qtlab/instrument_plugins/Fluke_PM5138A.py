@@ -18,7 +18,9 @@
 from qtlab.source.instrument import Instrument
 import types
 import logging
-import visa
+from qtlab.source import visa
+
+
 
 class Fluke_PM5138A(Instrument):
   '''

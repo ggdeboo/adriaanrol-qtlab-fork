@@ -18,7 +18,9 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from qtlab.source.instrument import Instrument
-import visa
+from qtlab.source import visa
+
+
 import types
 import logging
 import numpy

@@ -27,7 +27,6 @@ Contains:
 - functions to create standard data sets
 """
 
-import gobject
 import os
 import time
 import h5py
@@ -36,11 +35,11 @@ import numpy as np
 
 from lib.config import get_config
 config = get_config()
-in_qtlab = config.get('qtlab', False)
-from lib.network.object_sharer import SharedGObject, cache_result
+# in_qtlab = config.get('qtlab', False)
+from qtlab.source.lib.network.object_sharer import SharedGObject
 
-if in_qtlab:
-    from qtlab.source import qt
+# if in_qtlab:
+#     from qtlab.source import qt
 
 import data
 

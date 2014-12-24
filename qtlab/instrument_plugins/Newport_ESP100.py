@@ -18,7 +18,9 @@
 from qtlab.source.instrument import Instrument
 import types
 import logging
-import visa
+from qtlab.source import visa
+
+
 import time
 
 class Newport_ESP100(Instrument):

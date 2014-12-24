@@ -19,10 +19,6 @@ import logging
 import socket
 import select
 
-try:
-    from pyvisa import SerialInstrument
-except:
-    pass
 
 _drivers = (
     'pyvisa',

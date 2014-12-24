@@ -19,7 +19,6 @@
 import ctypes
 import types
 import time
-import sys
 import numpy as np
 
 from qtlab.source.instrument import Instrument
