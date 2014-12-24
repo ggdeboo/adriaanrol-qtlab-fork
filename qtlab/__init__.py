@@ -7,7 +7,7 @@ Available under GNU public license.
 Documentation and most up to date version can be found on https://github.com/AdriaanRol/qtlab-fork.
 
 '''
-
+print 'Importing qtlab '
 from qtlab.source import qt # Makes all the rest work a bit nicer if this is imported first :), needed due to recursive loops in the submodules.
 
 from qtlab.source import addons
@@ -31,3 +31,4 @@ from qtlab.source import visa
 # from . import source
 # from .source import *
 
+print 'done  importing'
