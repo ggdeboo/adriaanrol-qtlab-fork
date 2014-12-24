@@ -21,9 +21,7 @@ from qtlab.source import visa
 
 
 from visa import vpp43
-from lib from qtlab.source import visa
-
-func
+from qtlab.source.lib import visafunc
 import types
 import logging
 import time
