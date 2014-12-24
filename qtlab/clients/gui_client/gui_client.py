@@ -17,7 +17,7 @@ config = config.get_config()
 
 from lib.network import object_sharer as objsh
 
-from lib.misc import get_traceback
+from qtlab.source.lib.misc import get_traceback
 TB = get_traceback()()
 
 def setup_windows():

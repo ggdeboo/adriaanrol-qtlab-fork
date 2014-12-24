@@ -1,0 +1,3 @@
+[console_scripts]
+qtlab = qtlab.__main__:main
+

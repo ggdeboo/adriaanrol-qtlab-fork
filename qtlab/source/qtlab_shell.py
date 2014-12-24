@@ -81,9 +81,10 @@ def do_start():
         i += 1
 
     filelist = get_shell_files(os.path.join(basedir, 'init'), ignorelist)
+    for file_n in filelist: print file_n
     return filelist
 
-def start():
+if __name__ == '__main__':
     print 'Starting QT Lab environment...'
     filelist = do_start()
     for (dir, name) in filelist:
@@ -98,7 +99,4 @@ def start():
         del filelist, dir, name, filename
     except:
         pass
-
-if __name__ == '__main__':
-    start()
 

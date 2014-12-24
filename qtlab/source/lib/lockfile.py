@@ -1,6 +1,6 @@
 import os
 import sys
-from lib.misc import exit_shell
+from qtlab.source.lib.misc import exit_shell
 
 _remove_lock = True
 _filename = None

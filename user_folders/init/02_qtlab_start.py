@@ -28,7 +28,7 @@ _cfg['qtlab'] = True
 
 import types
 from qtlab.source.instrument import Instrument
-from lib.misc import exact_time, get_ipython
+from qtlab.source.lib.misc import exact_time, get_ipython
 from lib import temp
 from time import sleep
 
@@ -87,6 +87,6 @@ except Exception, e:
     print 'Error: %s' % str(e)
 
 # Other functions should be registered using qt.flow.register_exit_handler
-from lib.misc import register_exit
+from qtlab.source.lib.misc import register_exit
 import qtflow
 register_exit(qtflow.qtlab_exit)

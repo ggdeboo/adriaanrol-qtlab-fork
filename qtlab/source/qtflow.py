@@ -21,7 +21,7 @@ import gtk
 import logging
 import time
 from gettext import gettext as _L
-from lib.misc import exact_time, get_traceback
+from qtlab.source.lib.misc import exact_time, get_traceback
 from lib.network.object_sharer import SharedGObject
 import os
 

@@ -26,7 +26,7 @@ from lib.config import get_config
 # from insproxy import Proxy
 from lib.network.object_sharer import SharedGObject
 
-from lib.misc import get_traceback
+from qtlab.source.lib.misc import get_traceback
 TB = get_traceback()()
 
 def _set_insdir():

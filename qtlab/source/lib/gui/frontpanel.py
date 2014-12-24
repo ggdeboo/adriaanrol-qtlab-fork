@@ -23,7 +23,7 @@ import logging
 import qtwindow
 import qtclient as qt
 
-from lib.misc import dict_to_ordered_tuples
+from qtlab.source.lib.misc import dict_to_ordered_tuples
 from lib.network.object_sharer import helper
 
 from gettext import gettext as _L

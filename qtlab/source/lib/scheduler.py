@@ -19,7 +19,7 @@ import gobject
 import types
 
 from qtflow import get_flowcontrol
-from lib.misc import exact_time
+from qtlab.source.lib.misc import exact_time
 
 class Scheduler():
     '''
