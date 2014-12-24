@@ -23,7 +23,7 @@ import logging
 import sys
 import instrument
 from lib.config import get_config
-from insproxy import Proxy
+# from insproxy import Proxy
 from lib.network.object_sharer import SharedGObject
 
 from lib.misc import get_traceback
@@ -429,3 +429,82 @@ def get_instruments():
 if __name__ == '__main__':
     i = get_instruments()
     i.create('test1', 'HP1234')
+
+
+class Proxy():
+
+    def __init__(self, name, include_do=None):
+        self._config = get_config()
+        self._instruments = get_instruments()
+        self._name = name
+        self._proxy_names = []
+        self._setup_done = False
+        self._padd_hid = None
+        self._prem_hid = None
+
+        if include_do is None:
+            self._include_do = self._config.get('proxy_include_do', False)
+        else:
+            self._include_do = include_do
+
+        self._setup_proxy()
+        self._instruments.connect('instrument-added', self._ins_added_cb)
+        self._instruments.connect('instrument-removed', self._ins_removed_cb)
+
+    def _setup_proxy(self):
+        if self._setup_done:
+            return
+        self._setup_done = True
+
+        self._ins = self._instruments.get(self._name, proxy=False)
+        members = inspect.getmembers(self._ins)
+
+        toadd = instrument.Instrument.__dict__.keys()
+        toadd += ['connect', 'disconnect']
+        toadd += self._ins.__class__.__dict__.keys()
+        toadd += self._ins._added_methods
+        toadd += self._ins.get_function_names()
+        for (name, item) in members:
+            if name.startswith('do_') and not self._include_do:
+                continue
+            if callable(item) and not name.startswith('_') and name in toadd:
+                self._proxy_names.append(name)
+                setattr(self, name, item)
+
+        self._padd_hid = self.connect('parameter-added',
+                self._parameter_added_cb)
+        self._prem_hid = self.connect('parameter-removed',
+                self._parameter_removed_cb)
+
+    def _remove_functions(self):
+        if self._padd_hid is not None:
+            self.disconnect(self._padd_hid)
+            self.disconnect(self._prem_hid)
+        self._padd_hid = None
+        self._prem_hid = None
+
+        self._setup_done = False
+        for name in self._proxy_names:
+            delattr(self, name)
+        self._proxy_names = []
+        self._ins = None
+
+    def _ins_added_cb(self, sender, insname):
+        if insname == self._name:
+            self._setup_proxy()
+
+    def _ins_removed_cb(self, sender, insname):
+        if insname == self._name:
+            self._remove_functions()
+
+    def _parameter_added_cb(self, sender, name):
+        for func in ('get_%s' % name, 'set_%s' % name):
+            if hasattr(self._ins, func):
+                setattr(self, func, getattr(self._ins, func))
+
+    def _parameter_removed_cb(self, sender, name):
+        for func in ('get_%s' % name, 'set_%s' % name):
+            if hasattr(self, func):
+                delattr(self, func)
+
+
