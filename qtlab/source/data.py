@@ -36,8 +36,8 @@ config = get_config()
 in_qtlab = config.get('qtlab', False)
 from lib.network.object_sharer import SharedGObject, cache_result
 
-if in_qtlab:
-    from qtlab.source import qt
+# if in_qtlab:
+#     from qtlab.source import qt
 
 # Filename generator classes
 

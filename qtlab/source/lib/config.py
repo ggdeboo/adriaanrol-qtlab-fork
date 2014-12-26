@@ -53,7 +53,9 @@ class Config(gobject.GObject):
         self['execdir'] = get_execdir()
 
     def load_userconfig(self):
-        filename = os.path.join(get_execdir(), 'userconfig.py')
+        print 'Loading Userconfig'
+        filename = os.path.join(get_execdir(),'init','config', 'userconfig.py')
+        print filename
         if os.path.exists(filename):
             logging.debug('Loading userconfig from %s', filename)
             execfile(filename, {'config': self})
@@ -203,7 +205,6 @@ def create_config(filename):
     return _config
 
 _execdir = os.getcwd()
-_PycQEDdir = _execdir
 
 def get_execdir():
     '''Get work directory we started in.'''

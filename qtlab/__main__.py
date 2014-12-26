@@ -81,7 +81,6 @@ def do_start():
         i += 1
 
     filelist = get_shell_files(os.path.join(basedir, 'init'), ignorelist)
-    for file_n in filelist: print file_n
     return filelist
 
 if __name__ == '__main__':

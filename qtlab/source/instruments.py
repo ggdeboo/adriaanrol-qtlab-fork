@@ -16,13 +16,14 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import inspect
+import imp
 import gobject
 import types
 import os
 import logging
 import sys
 import instrument
-from lib.config import get_config
+from qtlab.source.lib.config import get_config
 # from insproxy import Proxy
 from lib.network.object_sharer import SharedGObject
 
@@ -30,9 +31,10 @@ from qtlab.source.lib.misc import get_traceback
 TB = get_traceback()()
 
 def _set_insdir():
-    dir = os.path.join(_config['execdir'], 'instrument_plugins')
-    sys.path.append(dir)
-    return dir
+    file_n, pathname, description = imp.find_module('qtlab')
+    insdir = os.path.join(pathname, 'instrument_plugins')
+    sys.path.append(insdir)
+    return insdir
 
 def _set_user_instrument_directories():
     '''
@@ -43,7 +45,7 @@ def _set_user_instrument_directories():
     if _config['user_instrument_directories']!=None:
         insdir_list = []
         for dir in _config['user_instrument_directories']:
-            dir = os.path.join(_config['PycQEDdir'],dir)
+            dir = os.path.join(_config['execdir'],dir)
             if not os.path.isdir(dir):
                 logging.warning(__name__ + ' : "%s" is not a valid path, removing from user instrument directories.' % dir)
             else:
@@ -51,9 +53,11 @@ def _set_user_instrument_directories():
                 insdir_list.append(absdir)
                 sys.path.append(absdir)
         _config['user_instrument_directories'] = insdir_list
+        print 'returning inslist'
         return insdir_list
 
     else:
+        print 'returning none'
         return None
 
 
@@ -418,6 +422,8 @@ class Instruments(SharedGObject):
 _config = get_config()
 _user_instrument_directories = _set_user_instrument_directories()
 _insdir = _set_insdir() #Order of user instrument dir and instrument dir is important because it sets the sys.path order, this way user insdirs take precedence over the default instruments
+
+
 
 _instruments = None
 def get_instruments():
