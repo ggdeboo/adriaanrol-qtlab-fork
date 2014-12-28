@@ -2,6 +2,7 @@
 qtlab.log
 qtlab.cfg
 qtlab.lock
+qtlab.egg-info
 gui_client.cfg
 data
 tmp
