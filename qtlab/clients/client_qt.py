@@ -18,8 +18,8 @@ sip.setapi('QString', 2)
 sip.setapi('QVariant', 2)
 from PyQt4 import QtGui, QtCore
 
-from lib.network import share_qt
-from lib.network import object_sharer as objsh
+from qtlab.source.lib.network import share_qt
+from qtlab.source.lib.network import object_sharer as objsh
 
 def close_client(self):
     app.exit()

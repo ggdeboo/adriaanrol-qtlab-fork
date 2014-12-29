@@ -8,9 +8,9 @@ import logging
 l = logging.getLogger()
 l.setLevel(logging.WARNING)
 
-adddir = os.path.join(os.getcwd(), 'source')
+adddir = os.path.join(os.getcwd(), 'source') #adding dirs should be removed
 sys.path.insert(0, adddir)
-from lib.network import object_sharer as objsh
+from qtlab.source.lib.network import object_sharer as objsh
 
 parser = optparse.OptionParser()
 parser.add_option('-d', '--disable-io', default=False, action='store_true')
@@ -38,7 +38,7 @@ def process_args():
             args.config += '_' + args.module + '.cfg'
 
     if args.config:
-        import lib.config as cfg
+        import qtlab.source.lib.config as cfg
         global config
         config = cfg.create_config(args.config)
     if args.name:

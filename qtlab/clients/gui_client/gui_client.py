@@ -15,7 +15,7 @@ sys.path.insert(0, adddir)
 from lib import config
 config = config.get_config()
 
-from lib.network import object_sharer as objsh
+from qtlab.source.lib.network import object_sharer as objsh
 
 from qtlab.source.lib.misc import get_traceback
 TB = get_traceback()()

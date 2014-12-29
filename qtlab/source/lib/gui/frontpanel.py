@@ -24,7 +24,7 @@ import qtwindow
 import qtclient as qt
 
 from qtlab.source.lib.misc import dict_to_ordered_tuples
-from lib.network.object_sharer import helper
+from qtlab.source.lib.network.object_sharer import helper
 
 from gettext import gettext as _L
 

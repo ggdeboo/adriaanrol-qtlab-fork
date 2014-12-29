@@ -22,7 +22,7 @@ import logging
 import time
 from gettext import gettext as _L
 from qtlab.source.lib.misc import exact_time, get_traceback
-from lib.network.object_sharer import SharedGObject
+from qtlab.source.lib.network.object_sharer import SharedGObject
 import os
 
 AutoFormattedTB = get_traceback()

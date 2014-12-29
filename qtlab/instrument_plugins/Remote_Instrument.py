@@ -1,6 +1,6 @@
 from qtlab.source.instrument import Instrument
-from lib.network import remote_instrument as ri
-from lib.network import object_sharer as objsh
+from qtlab.source.lib.network import remote_instrument as ri
+from qtlab.source.lib.network import object_sharer as objsh
 import logging
 
 class Remote_Instrument(Instrument):

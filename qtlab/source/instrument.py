@@ -23,7 +23,7 @@ import math
 import inspect
 from gettext import gettext as _L
 from lib import calltimer
-from lib.network.object_sharer import SharedGObject, cache_result
+from qtlab.source.lib.network.object_sharer import SharedGObject, cache_result
 
 import numpy as np
 import logging

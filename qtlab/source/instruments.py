@@ -25,7 +25,7 @@ import sys
 import instrument
 from qtlab.source.lib.config import get_config
 # from insproxy import Proxy
-from lib.network.object_sharer import SharedGObject
+from qtlab.source.lib.network.object_sharer import SharedGObject
 
 from qtlab.source.lib.misc import get_traceback
 TB = get_traceback()()

@@ -34,7 +34,7 @@ from qtlab.source.lib.misc import dict_to_ordered_tuples, get_arg_type
 from lib.config import get_config
 config = get_config()
 in_qtlab = config.get('qtlab', False)
-from lib.network.object_sharer import SharedGObject, cache_result
+from qtlab.source.lib.network.object_sharer import SharedGObject, cache_result
 
 # if in_qtlab:
 #     from qtlab.source import qt

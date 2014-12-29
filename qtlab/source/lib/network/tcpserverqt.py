@@ -20,8 +20,8 @@
 import gobject
 import socket
 
-from lib.network.object_sharer import helper, PORT
-from lib.network.tcpserver import GlibTCPHandler
+from qtlab.source.lib.network.object_sharer import helper, PORT
+from qtlab.source.lib.network.tcpserver import GlibTCPHandler
 
 from PyQt4 import QtGui, QtCore
 

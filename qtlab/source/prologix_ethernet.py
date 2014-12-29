@@ -7,7 +7,7 @@ interfaces GPIB commands over ethernet
 
 To use this to talk to devices do this before creating any instruments:
 
-    from lib.network import prologix as visa
+    from qtlab.source.lib.network import prologix as visa
     visa.set_controller_address("<ip>", <port>)
 
 released under the GPL, whatever version
@@ -47,7 +47,7 @@ class instrument(object):
 
     CONNECTIONS = {}
 
-    def __init__(self, gpib, **kwargs):	
+    def __init__(self, gpib, **kwargs):
         self.conn = None
 
         # for compatibility with NI visa

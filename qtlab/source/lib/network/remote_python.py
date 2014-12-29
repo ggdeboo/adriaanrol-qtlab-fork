@@ -17,7 +17,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import logging
-from lib.network import tcpserver, tcpclient
+from qtlab.source.lib.network import tcpserver, tcpclient
 from qtlab.source import qt
 
 PORT = 12000

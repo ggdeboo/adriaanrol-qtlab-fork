@@ -28,7 +28,7 @@ config = get_config()
 from data import Data
 from lib import namedlist
 from qtlab.source.lib.misc import get_dict_keys
-from lib.network.object_sharer import SharedGObject, cache_result
+from qtlab.source.lib.network.object_sharer import SharedGObject, cache_result
 
 def _convert_arrays(args):
     args = list(args)

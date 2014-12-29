@@ -1,9 +1,9 @@
-# qtclient.py, module that should replace qt.py in clients 
+# qtclient.py, module that should replace qt.py in clients
 # The name of this file might be somewhat confusing due to the existence
 # of client_qt.py which contains code to start a client based on the Qt
 # toolkit.
 
-from lib.network.object_sharer import helper
+from qtlab.source.lib.network.object_sharer import helper
 import time
 import types
 

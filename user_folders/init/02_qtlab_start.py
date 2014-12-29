@@ -33,17 +33,17 @@ from lib import temp
 from time import sleep
 
 #set_debug(True)
-from lib.network import object_sharer as objsh
+from qtlab.source.lib.network import object_sharer as objsh
 iname = _cfg.get('instance_name', '')
 objsh.root.set_instance_name(iname)
 print 'Setting instance name to %s' % iname
-from lib.network import share_gtk
+from qtlab.source.lib.network import share_gtk
 share_gtk.start_server('localhost', port=_cfg.get('port', objsh.PORT))
 for _ipaddr in _cfg['allowed_ips']:
     objsh.SharedObject.server.add_allowed_ip(_ipaddr)
 objsh.PythonInterpreter('python_server', globals())
 if _cfg['instrument_server']:
-    from lib.network import remote_instrument
+    from qtlab.source.lib.network import remote_instrument
     remote_instrument.InstrumentServer()
 
 if False:

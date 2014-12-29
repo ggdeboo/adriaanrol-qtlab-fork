@@ -24,7 +24,7 @@ from gettext import gettext as _L
 import lib.gui as gui
 from lib.gui import dropdowns, qtwindow
 
-from lib.network.object_sharer import helper
+from qtlab.source.lib.network.object_sharer import helper
 
 import qtclient as qt
 

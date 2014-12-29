@@ -1,4 +1,4 @@
-from lib.network import object_sharer
+from qtlab.source.lib.network import object_sharer
 from lib import temp, lockfile
 
 qt.flow.register_exit_handler(qt.config._do_save)
