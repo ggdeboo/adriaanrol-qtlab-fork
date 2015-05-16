@@ -1,6 +1,5 @@
 # This file contains user-specific settings for qtlab.
 # It is run as a regular python script.
-
 # Do not change the following line unless you know what you are doing
 config.remove([
             'datadir',
@@ -9,16 +8,16 @@ config.remove([
             'user_ins_dir',
             'startgui',
             'gnuplot_terminal',
+            'ipython_logfile',
             ])
-
 # QTLab instance name and port for networked operation
 config['instance_name'] = 'qtlab_n1'
 config['port'] = 12002
 
 # A list of allowed IP ranges for remote connections
 config['allowed_ips'] = (
-#    '130.161.*.*',
-#    '145.94.*.*',
+   '130.161.*.*',
+   '145.94.*.*',
 )
 
 # Start instrument server to share with instruments with remote QTLab?
@@ -63,4 +62,4 @@ config['startgui'] = True
 #config['gnuplot_terminal'] = 'windows'
 
 # Enter a filename here to log all IPython commands
-config['ipython_logfile'] = ''      #e.g. 'command.log'
+# config['ipython_logfile'] = '' #command.log'

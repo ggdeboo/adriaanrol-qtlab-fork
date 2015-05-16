@@ -53,12 +53,14 @@ class Config(gobject.GObject):
         self['execdir'] = get_execdir()
 
     def load_userconfig(self):
-        print 'Loading Userconfig'
-        filename = os.path.join(get_execdir(),'init','config', 'userconfig.py')
-        print filename
+        filename = os.path.join(get_execdir(), 'init', 'config', 'userconfig.py')
+
         if os.path.exists(filename):
+            print 'Loading userconfig from %s' % filename
             logging.debug('Loading userconfig from %s', filename)
             execfile(filename, {'config': self})
+        else:
+            raise Exception('Could not load userconfig  %s' % filename)
 
     def setup_tempdir(self):
         '''Get directory for temporary files.'''

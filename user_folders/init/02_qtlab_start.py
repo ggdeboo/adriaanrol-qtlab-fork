@@ -3,6 +3,7 @@ _cfg = config.create_config('qtlab.cfg')
 _cfg.load_userconfig()
 _cfg.setup_tempdir()
 print '02_qtlab_start'
+
 def _parse_options():
     import optparse
     parser = optparse.OptionParser(description='QTLab')
@@ -42,6 +43,7 @@ share_gtk.start_server('localhost', port=_cfg.get('port', objsh.PORT))
 for _ipaddr in _cfg['allowed_ips']:
     objsh.SharedObject.server.add_allowed_ip(_ipaddr)
 objsh.PythonInterpreter('python_server', globals())
+print 'Starting instrument server:'
 if _cfg['instrument_server']:
     from qtlab.source.lib.network import remote_instrument
     remote_instrument.InstrumentServer()
@@ -84,6 +86,7 @@ try:
     # likely it is already caught by ipython itself.
     get_ipython().set_custom_exc((Exception, ), qtflow.exception_handler)
 except Exception, e:
+    raise Exception(e)
     print 'Error: %s' % str(e)
 
 # Other functions should be registered using qt.flow.register_exit_handler
