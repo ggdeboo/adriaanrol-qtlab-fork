@@ -1,6 +1,5 @@
 import logging
-import os
-from qtlab.source.lib import config
+from lib import config
 
 def _setup_logging():
     logging.basicConfig(level=logging.INFO,

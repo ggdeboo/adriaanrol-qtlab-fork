@@ -2,7 +2,7 @@
 _cfg = config.create_config('qtlab.cfg')
 _cfg.load_userconfig()
 _cfg.setup_tempdir()
-print '02_qtlab_start'
+
 def _parse_options():
     import optparse
     parser = optparse.OptionParser(description='QTLab')
@@ -27,23 +27,23 @@ _parse_options()
 _cfg['qtlab'] = True
 
 import types
-from qtlab.source.instrument import Instrument
-from qtlab.source.lib.misc import exact_time, get_ipython
-from qtlab.source.lib import temp
+from instrument import Instrument
+from lib.misc import exact_time, get_ipython
+from lib import temp
 from time import sleep
 
 #set_debug(True)
-from qtlab.source.lib.network import object_sharer as objsh
+from lib.network import object_sharer as objsh
 iname = _cfg.get('instance_name', '')
 objsh.root.set_instance_name(iname)
 print 'Setting instance name to %s' % iname
-from qtlab.source.lib.network import share_gtk
+from lib.network import share_gtk
 share_gtk.start_server('localhost', port=_cfg.get('port', objsh.PORT))
 for _ipaddr in _cfg['allowed_ips']:
     objsh.SharedObject.server.add_allowed_ip(_ipaddr)
 objsh.PythonInterpreter('python_server', globals())
 if _cfg['instrument_server']:
-    from qtlab.source.lib.network import remote_instrument
+    from lib.network import remote_instrument
     remote_instrument.InstrumentServer()
 
 if False:
@@ -53,8 +53,8 @@ if False:
 else:
     logging.info('psyco acceleration not enabled')
 
-from qtlab.source import qt
-# from qtlab.source import plot, plot3, Plot2D, Plot3D, Data
+import qt
+# from qt import plot, plot3, Plot2D, Plot3D, Data
 
 from numpy import *
 import numpy as np
@@ -79,7 +79,7 @@ if __startdir__ is not None:
 
 # Set exception handler
 try:
-    from qtlab.source import qtflow
+    import qtflow
     # Note: This does not seem to work for 'KeyboardInterrupt',
     # likely it is already caught by ipython itself.
     get_ipython().set_custom_exc((Exception, ), qtflow.exception_handler)
@@ -87,5 +87,6 @@ except Exception, e:
     print 'Error: %s' % str(e)
 
 # Other functions should be registered using qt.flow.register_exit_handler
-from qtlab.source.lib.misc import register_exit
+from lib.misc import register_exit
+import qtflow
 register_exit(qtflow.qtlab_exit)
