@@ -23,7 +23,7 @@ def setup_windows():
     from windows import main_window
     main_window.Window()
     cur_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-    winpath = os.path.abspath(os.path.join(cur_dir,os.pardir, 'windows'))
+    winpath = os.path.abspath(os.path.join(cur_dir, 'windows'))
     print 'debug printing win_path'
     print winpath
 
