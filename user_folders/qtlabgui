@@ -1,5 +1,5 @@
 #!/bin/bash
 
 basedir=`dirname $0`
+# Hardcoded python path... should be fixed
 python /usr/local/lib/python2.7/site-packages/qtlab/clients/client_gtk.py --module gui_client --config gui_client.cfg "$@"
-# Dollar takes care of argument being passed

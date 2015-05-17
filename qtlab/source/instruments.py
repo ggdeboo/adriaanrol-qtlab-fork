@@ -196,28 +196,21 @@ class Instruments(SharedGObject):
         if _user_instrument_directories is not None:
             filelist = []
             for user_insdir in _user_instrument_directories:
-                filelist.extend(  os.listdir(user_insdir))
+                filelist.extend(os.listdir(user_insdir))
             for path_fn in filelist:
                 path, fn = os.path.split(path_fn)
                 name, ext = os.path.splitext(fn)
-                if ext == '.py' and name != "__init__" and name[0] != '_' and not ret.count(name) > 0:
+                if ext == '.py' and name != "__init__" and name[0] != '_' \
+                        and not ret.count(name) > 0:
                     ret.append(name)
         ret.sort()
         return ret
 
     def type_exists(self, typename):
-        #Still need to edit this to be compatible with multiple instrument directories
-        if _user_instrument_directories != None:
-            for user_insdir in _user_instrument_directories:
-                driverfn = os.path.join(user_insdir, '%s.py' % typename)
-                if os.path.exists(driverfn):
-                    return os.path.exists(driverfn)
+        if typename in self.get_types():
+            return True
         else:
-            driverfn = os.path.join(_insdir, '%s.py' % typename)
-            if os.path.exists(driverfn):
-                return True
-        return False
-
+            return False
 
     def get_type_arguments(self, typename):
         '''
@@ -421,7 +414,9 @@ class Instruments(SharedGObject):
 
 _config = get_config()
 _user_instrument_directories = _set_user_instrument_directories()
-_insdir = _set_insdir() #Order of user instrument dir and instrument dir is important because it sets the sys.path order, this way user insdirs take precedence over the default instruments
+_insdir = _set_insdir()  # Order of user instrument dir and instrument dir is
+# important because it sets the sys.path order, this way user insdirs take
+# precedence over the default instruments
 
 
 
