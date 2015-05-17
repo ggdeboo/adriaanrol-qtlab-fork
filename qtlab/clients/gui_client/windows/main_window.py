@@ -20,7 +20,7 @@ import sys
 from gettext import gettext as _L
 import logging
 
-import lib.gui as gui
+from qtlab.source.lib import gui
 from qtlab.source.lib.gui import qtwindow, stopbutton, orderedbox
 
 from qtlab.source import qtclient as qt

@@ -21,7 +21,7 @@ import logging
 from gettext import gettext as _L
 
 from qtlab.source import qtclient as qt
-import lib.gui as gui
+from qtlab.source.lib import gui
 from qtlab.source.lib.gui import dropdowns, qtwindow, frontpanel, slider
 from qtlab.source.lib.gui.flexscale import FlexScale
 from qtlab.source.lib.gui.functionframe import ArgumentTable, FunctionFrame

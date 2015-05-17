@@ -20,7 +20,7 @@ import gobject
 import logging
 import types
 
-import lib.misc as misc
+from qtlab.source.lib import misc
 
 TEXT_ALL = '<All>'
 TEXT_NONE = '<None>'

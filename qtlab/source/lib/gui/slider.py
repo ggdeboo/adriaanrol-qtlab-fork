@@ -22,7 +22,7 @@ import gtk
 import logging
 from gettext import gettext as _L
 
-import lib.gui as gui
+from qtlab.source.lib import gui
 
 import qtwindow
 from qtlab.source import qt

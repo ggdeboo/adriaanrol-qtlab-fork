@@ -22,7 +22,7 @@ import types
 import logging
 
 from gettext import gettext as _L
-import lib.gui as gui
+from qtlab.source.lib import gui
 from qtlab.source.lib.gui import dropdowns, qtwindow, qttable
 from qtlab.source.lib import databrowser
 

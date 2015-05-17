@@ -33,7 +33,7 @@ import pango
 
 from gettext import gettext as _L
 
-import lib.gui as gui
+from qtlab.source.lib import gui
 from qtlab.source.lib.gui.qtwindow import QTWindow
 
 def get_python_filter():
