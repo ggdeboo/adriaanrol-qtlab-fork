@@ -1,4 +1,3 @@
-print '98_started'
 from qtlab.source.lib.network import object_sharer
 from qtlab.source.lib import temp, lockfile
 

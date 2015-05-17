@@ -280,8 +280,9 @@ class Instruments(SharedGObject):
 
         # Set VISA provider
         visa_driver = kwargs.get('visa', 'pyvisa')
-        dummy_instrument = kwargs.pop('dummy_instrument', False) #Dummy instruments can be loaded without visa for analysis computers
-        if dummy_instrument ==False:
+        dummy_instrument = kwargs.pop('dummy_instrument', False)
+        # Dummy instruments can be loaded without visa for analysis computers
+        if not dummy_instrument:
             import visa
             visa.set_visa(visa_driver)
 

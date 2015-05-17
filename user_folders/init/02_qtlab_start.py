@@ -2,8 +2,6 @@ import os
 _cfg = config.create_config('qtlab.cfg')
 _cfg.load_userconfig()
 _cfg.setup_tempdir()
-print '02_qtlab_start'
-
 _cfg['qtlab_dir'] = os.path.abspath(
     os.path.join(os.path.dirname(config.__file__), os.pardir,
                  os.pardir))
@@ -69,7 +67,6 @@ try:
 except:
     pass
 # Auto-start GUI
-print 'GUI gets started here'
 if qt.config.get('startgui', True):
     qt.flow.start_gui()
 

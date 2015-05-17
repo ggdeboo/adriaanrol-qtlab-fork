@@ -24,8 +24,6 @@ def setup_windows():
     main_window.Window()
     cur_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
     winpath = os.path.abspath(os.path.join(cur_dir, 'windows'))
-    print 'debug printing win_path'
-    print winpath
 
     for fn in os.listdir(winpath):
         if not fn.endswith('_window.py') or fn == 'main_window.py':

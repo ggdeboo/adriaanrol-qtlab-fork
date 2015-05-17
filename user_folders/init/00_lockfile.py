@@ -1,6 +1,5 @@
 from qtlab.source.lib import config, lockfile
 import os
-print 'Lockfile'
 _lockname = os.path.join(config.get_execdir(), 'qtlab.lock')
 lockfile.set_filename(_lockname)
 del _lockname

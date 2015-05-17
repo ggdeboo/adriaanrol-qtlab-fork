@@ -1,4 +1,3 @@
-print '30_network_server'
 #from qtlab.source.lib.network import remote_python
 #remote_python.start_server()
 
