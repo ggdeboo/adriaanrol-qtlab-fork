@@ -263,7 +263,7 @@ class FlowControl(SharedGObject):
 
         curdir = os.getcwd()
         # Inserted for testing purposes only
-        os.chdir(os.path.join(qt.config['execdir'], 'gui_startup')
+        os.chdir(qt.config['execdir'])
 
         args = ['-p', str(qt.config['port']), '--name', qt.config['instance_name']]
         args.extend(arg_list)
