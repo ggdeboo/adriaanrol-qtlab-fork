@@ -66,6 +66,7 @@ except:
     pass
 
 # Auto-start GUI
+print 'GUI gets started here'
 if qt.config.get('startgui', True):
     qt.flow.start_gui()
 
