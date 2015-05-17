@@ -21,7 +21,7 @@ import gtk
 import logging
 
 import qtwindow
-import qtclient as qt
+from qtlab.source import qtclient as qt
 
 from qtlab.source.lib.misc import dict_to_ordered_tuples
 from qtlab.source.lib.network.object_sharer import helper

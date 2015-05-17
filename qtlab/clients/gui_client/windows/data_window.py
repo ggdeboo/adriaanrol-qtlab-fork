@@ -16,7 +16,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import gtk
-import qtclient as qt
+from qtlab.source import qtclient as qt
 import os
 import types
 import logging

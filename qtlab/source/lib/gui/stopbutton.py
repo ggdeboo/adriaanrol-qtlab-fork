@@ -1,7 +1,7 @@
 import gtk
 from gettext import gettext as _L
 
-import qtclient as qt
+from qtlab.source import qtclient as qt
 
 class StopButton(gtk.Button):
 

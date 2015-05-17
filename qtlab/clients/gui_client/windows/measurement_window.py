@@ -23,7 +23,7 @@ import os
 import logging
 from gettext import gettext as _L
 
-import qtclient as qt
+from qtlab.source import qtclient as qt
 from lib.gui.qtwindow import QTWindow
 from lib.gui.dropdowns import AllParametersDropdown
 from lib.gui.stopbutton import StopButton, PauseButton

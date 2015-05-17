@@ -50,7 +50,7 @@ def setup_windows():
 
 def _close_gui_cb(*args):
     import gtk
-    import qtclient as qt
+    from qtlab.source import qtclient as qt
     logging.info('Closing GUI')
     qt.config.save(delay=0)
     try:
@@ -60,7 +60,7 @@ def _close_gui_cb(*args):
     sys.exit()
 
 objsh.helper.register_event_callback('disconnected', _close_gui_cb)
-import qtclient as qt
+from qtlab.source import qtclient as qt
 qt.flow.connect('close-gui', _close_gui_cb)
 setup_windows()
 

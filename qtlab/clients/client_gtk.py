@@ -12,7 +12,7 @@ from qtlab.source.lib.network import share_gtk
 
 def _close_gui_cb(*args):
     import gtk
-    import qtclient as qt
+    from qtlab.source import qtclient as qt
     logging.info('Closing client')
     qt.config.save(delay=0)
     try:

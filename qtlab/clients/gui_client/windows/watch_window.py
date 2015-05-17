@@ -19,7 +19,7 @@ import gtk
 import gobject
 import time
 import logging
-import qtclient as qt
+from qtlab.source import qtclient as qt
 
 from gettext import gettext as _L
 

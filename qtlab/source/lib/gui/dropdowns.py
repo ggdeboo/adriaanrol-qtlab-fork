@@ -26,7 +26,7 @@ TEXT_ALL = '<All>'
 TEXT_NONE = '<None>'
 
 from qtlab.source.lib.network.object_sharer import helper
-import qtclient as qt
+from qtlab.source import qtclient as qt
 
 class QTComboBox(gtk.ComboBox):
 

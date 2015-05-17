@@ -23,7 +23,7 @@ import logging
 import lib.gui as gui
 from lib.gui import qtwindow, stopbutton, orderedbox
 
-import qtclient as qt
+from qtlab.source import qtclient as qt
 
 class MainWindow(qtwindow.QTWindow):
 

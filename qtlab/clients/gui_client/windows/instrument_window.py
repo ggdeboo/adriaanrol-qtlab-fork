@@ -26,7 +26,7 @@ from lib.gui import dropdowns, qtwindow
 
 from qtlab.source.lib.network.object_sharer import helper
 
-import qtclient as qt
+from qtlab.source import qtclient as qt
 
 class QTInstrumentFrame(gtk.VBox):
 

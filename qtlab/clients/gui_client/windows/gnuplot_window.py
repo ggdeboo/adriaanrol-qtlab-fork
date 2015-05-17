@@ -17,7 +17,7 @@
 
 import gtk
 import gobject
-import qtclient as qt
+from qtlab.source import qtclient as qt
 #from plot_engines import qtgnuplot
 import logging
 
