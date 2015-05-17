@@ -7,7 +7,7 @@ from qtlab.source.lib.network.object_sharer import helper
 import time
 import types
 
-from lib import config
+from qtlab.source.lib import config
 config = config.get_config()
 
 class constants():

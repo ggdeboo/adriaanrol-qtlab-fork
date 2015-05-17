@@ -263,7 +263,7 @@ class FlowControl(SharedGObject):
 
         curdir = os.getcwd()
         # Inserted for testing purposes only
-        os.chdir('/Users/Adriaan/GitHubRepos/qtlab-fork/qtlab')
+        os.chdir('usr/local/lib/python2.7/site-packages/qtlab/')
         # os.chdir(qt.config['execdir'])
 
         args = ['-p', str(qt.config['port']), '--name', qt.config['instance_name']]
