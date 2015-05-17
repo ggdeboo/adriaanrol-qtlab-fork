@@ -1,8 +1,12 @@
-
+import os
 _cfg = config.create_config('qtlab.cfg')
 _cfg.load_userconfig()
 _cfg.setup_tempdir()
 print '02_qtlab_start'
+
+_cfg['qtlab_dir'] = os.path.abspath(
+    os.path.join(os.path.dirname(config.__file__), os.pardir,
+                 os.pardir))
 
 def _parse_options():
     import optparse
