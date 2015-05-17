@@ -3,7 +3,7 @@
 import logging
 l = logging.getLogger()
 l.setLevel(logging.WARNING)
-
+import inspect
 import os
 import sys
 import time
@@ -16,17 +16,16 @@ from qtlab.source.lib import config
 config = config.get_config()
 
 from qtlab.source.lib.network import object_sharer as objsh
-from qtlab.source import qtclient as qt
 from qtlab.source.lib.misc import get_traceback
 TB = get_traceback()()
 
 def setup_windows():
     from windows import main_window
     main_window.Window()
-
-    print 'DEBUG PRINT '
-    print qt.config['qtlab_dir']
-    winpath = os.path.join(qt.config['qtlab_dir'], 'clients/gui_client/windows')
+    cur_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+    winpath = os.path.abspath(os.path.join(cur_dir,os.pardir, 'windows'))
+    print 'debug printing win_path'
+    print winpath
 
     for fn in os.listdir(winpath):
         if not fn.endswith('_window.py') or fn == 'main_window.py':
