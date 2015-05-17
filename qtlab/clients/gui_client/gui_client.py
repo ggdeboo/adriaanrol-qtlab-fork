@@ -16,7 +16,7 @@ from qtlab.source.lib import config
 config = config.get_config()
 
 from qtlab.source.lib.network import object_sharer as objsh
-
+from qtlab.source import qtclient as qt
 from qtlab.source.lib.misc import get_traceback
 TB = get_traceback()()
 
@@ -25,8 +25,8 @@ def setup_windows():
     main_window.Window()
 
     print 'DEBUG PRINT '
-    print config['qtlab_dir']
-    winpath = os.path.join(config['qtlab_dir'], 'clients/gui_client/windows')
+    print qt.config['qtlab_dir']
+    winpath = os.path.join(qt.config['qtlab_dir'], 'clients/gui_client/windows')
 
     for fn in os.listdir(winpath):
         if not fn.endswith('_window.py') or fn == 'main_window.py':
