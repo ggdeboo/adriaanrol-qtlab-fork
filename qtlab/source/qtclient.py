@@ -40,7 +40,7 @@ interpreter = helper.find_object('%s:python_server' % config['instance_name'])
 frontpanels = {}
 sliders = {}
 
-from lib.gui.qtwindow import QTWindow
+from qtlab.source.lib.gui.qtwindow import QTWindow
 windows = QTWindow.get_named_list()
 
 def get_instrument_proxy(name):

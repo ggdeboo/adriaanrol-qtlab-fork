@@ -1,5 +1,5 @@
 import time
-from lib import misc
+from qtlab.source.lib import misc
 
 def _all_true(vec):
     for v in vec:
@@ -56,7 +56,7 @@ def move_abs(posins, moveins, newpos, startstep=4, maxstep=128, minstep=1, delay
                         hold[i] = True
                     elif abs(steps[i]) != maxstep:
                         steps[i] = misc.sign(delta2[i]) * min(abs(steps[i]) * 2, maxstep)
-#                        print 'move_abs(): increasing stepsize for ch%d to %f' % (i, steps[i]) 
+#                        print 'move_abs(): increasing stepsize for ch%d to %f' % (i, steps[i])
 
             if _all_true(hold):
                 increase_steps = False

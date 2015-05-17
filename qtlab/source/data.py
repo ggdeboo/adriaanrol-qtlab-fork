@@ -29,9 +29,9 @@ import shutil
 
 from gettext import gettext as _L
 
-from lib import namedlist, temp
+from qtlab.source.lib import namedlist, temp
 from qtlab.source.lib.misc import dict_to_ordered_tuples, get_arg_type
-from lib.config import get_config
+from qtlab.source.lib.config import get_config
 config = get_config()
 in_qtlab = config.get('qtlab', False)
 from qtlab.source.lib.network.object_sharer import SharedGObject, cache_result

@@ -22,10 +22,10 @@ from qtlab.source import qtclient as qt
 
 from gettext import gettext as _L
 
-from lib.gui.qtwindow import QTWindow
-from lib.gui.qttable import QTTable
-from lib.gui.dropdowns import InstrumentDropdown
-from lib.gui.misc import pack_hbox, pack_vbox
+from qtlab.source.lib.gui.qtwindow import QTWindow
+from qtlab.source.lib.gui.qttable import QTTable
+from qtlab.source.lib.gui.dropdowns import InstrumentDropdown
+from qtlab.source.lib.gui.misc import pack_hbox, pack_vbox
 from qtlab.source.lib.misc import sign
 
 class PositionControls(gtk.Frame):

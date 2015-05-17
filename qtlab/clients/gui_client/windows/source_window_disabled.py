@@ -21,7 +21,7 @@ from qtlab.source import qtclient as qt
 import os
 import tempfile
 import time
-from lib.gui import dirtree
+from qtlab.source.lib.gui import dirtree
 
 try:
     import gtksourceview2
@@ -34,7 +34,7 @@ import pango
 from gettext import gettext as _L
 
 import lib.gui as gui
-from lib.gui.qtwindow import QTWindow
+from qtlab.source.lib.gui.qtwindow import QTWindow
 
 def get_python_filter():
     filter = gtk.FileFilter()

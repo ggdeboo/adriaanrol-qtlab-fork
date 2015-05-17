@@ -5,7 +5,7 @@
 # it shows how to read back the information from an instrument settingsfile
 
 from numpy import pi, linspace, sinc
-from lib.file_support.settingsfile import SettingsFile
+from qtlab.source.lib.file_support.settingsfile import SettingsFile
 from pprint import pprint
 
 x_vec = linspace(-2 * pi, 2 * pi, 200)

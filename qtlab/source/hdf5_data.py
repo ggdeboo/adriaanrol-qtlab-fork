@@ -33,7 +33,7 @@ import h5py
 import logging
 import numpy as np
 
-from lib.config import get_config
+from qtlab.source.lib.config import get_config
 config = get_config()
 # in_qtlab = config.get('qtlab', False)
 from qtlab.source.lib.network.object_sharer import SharedGObject

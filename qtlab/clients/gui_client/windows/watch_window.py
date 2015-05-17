@@ -24,9 +24,9 @@ from qtlab.source import qtclient as qt
 from gettext import gettext as _L
 
 import lib.gui as gui
-from lib.gui.qttable import QTTable
-from lib.gui import dropdowns, qtwindow
-from lib import temp
+from qtlab.source.lib.gui.qttable import QTTable
+from qtlab.source.lib.gui import dropdowns, qtwindow
+from qtlab.source.lib import temp
 
 import numpy as np
 

@@ -104,7 +104,7 @@ qt.mstart()
 class MeasurementGenerator():
 
     HEAD = """
-from lib.measurement import Measurement
+from qtlab.source.lib.measurement import Measurement
 
 m = Measurement()
 """

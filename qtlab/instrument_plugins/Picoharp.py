@@ -16,7 +16,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from lib.dll_support import picoquant_ph
+from qtlab.source.lib.dll_support import picoquant_ph
 from qtlab.source.instrument import Instrument
 import types
 import logging

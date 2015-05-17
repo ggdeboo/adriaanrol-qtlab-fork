@@ -18,7 +18,7 @@
 import types
 import ctypes
 import logging
-from lib.dll_support import standa_usmc as standa
+from qtlab.source.lib.dll_support import standa_usmc as standa
 from qtlab.source.instrument import Instrument
 from qtlab.source import qt
 

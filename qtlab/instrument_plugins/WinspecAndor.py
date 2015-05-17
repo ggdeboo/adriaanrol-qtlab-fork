@@ -19,8 +19,8 @@ from qtlab.source.instrument import Instrument
 import types
 import logging
 
-from lib.com_support import winspec
-from lib.dll_support import andor
+from qtlab.source.lib.com_support import winspec
+from qtlab.source.lib.dll_support import andor
 
 from qtlab.source import qt
 

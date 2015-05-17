@@ -3,7 +3,7 @@
 import os
 from qtflow import get_flowcontrol
 from qtlab.source.instruments import get_instruments
-from lib import config as _config
+from qtlab.source.lib import config as _config
 from data import Data
 # from plot import Plot, plot, plot3, replot_all
 from scripts import Scripts, Script

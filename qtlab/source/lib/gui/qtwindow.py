@@ -3,8 +3,8 @@ import gobject
 
 from gettext import gettext as _L
 
-from lib import namedlist
-from lib.config import get_config
+from qtlab.source.lib import namedlist
+from qtlab.source.lib.config import get_config
 config = get_config()
 
 class QTWindow(gtk.Window):

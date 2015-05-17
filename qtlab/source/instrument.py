@@ -22,14 +22,14 @@ import time
 import math
 import inspect
 from gettext import gettext as _L
-from lib import calltimer
+from qtlab.source.lib import calltimer
 from qtlab.source.lib.network.object_sharer import SharedGObject, cache_result
 
 import numpy as np
 import logging
 from qtlab.source.qtflow import get_flowcontrol
 
-from lib.config import get_config
+from qtlab.source.lib.config import get_config
 config = get_config()
 
 class Instrument(SharedGObject):

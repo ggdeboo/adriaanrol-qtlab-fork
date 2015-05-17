@@ -24,13 +24,13 @@ import logging
 from gettext import gettext as _L
 
 from qtlab.source import qtclient as qt
-from lib.gui.qtwindow import QTWindow
-from lib.gui.dropdowns import AllParametersDropdown
-from lib.gui.stopbutton import StopButton, PauseButton
-from lib import gui
+from qtlab.source.lib.gui.qtwindow import QTWindow
+from qtlab.source.lib.gui.dropdowns import AllParametersDropdown
+from qtlab.source.lib.gui.stopbutton import StopButton, PauseButton
+from qtlab.source.lib import gui
 
-from lib import misc
-from lib import scriptgenerator
+from qtlab.source.lib import misc
+from qtlab.source.lib import scriptgenerator
 
 def do_print(x):
     print x

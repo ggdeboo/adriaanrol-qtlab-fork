@@ -23,7 +23,7 @@ import pyvisa.vpp43 as vpp43
 from time import sleep
 import logging
 import numpy
-from lib import visafunc
+from qtlab.source.lib import visafunc
 
 class IVVI(Instrument):
     '''

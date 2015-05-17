@@ -21,7 +21,7 @@ from gettext import gettext as _L
 import logging
 
 import lib.gui as gui
-from lib.gui import qtwindow, stopbutton, orderedbox
+from qtlab.source.lib.gui import qtwindow, stopbutton, orderedbox
 
 from qtlab.source import qtclient as qt
 

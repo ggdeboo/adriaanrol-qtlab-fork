@@ -16,7 +16,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import types
-from lib.dll_support import nidaq
+from qtlab.source.lib.dll_support import nidaq
 from qtlab.source.instrument import Instrument
 from qtlab.source import qt
 

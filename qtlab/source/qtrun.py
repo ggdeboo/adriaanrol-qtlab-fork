@@ -18,7 +18,7 @@
 import os
 import shutil
 import copy
-from lib import calltimer
+from qtlab.source.lib import calltimer
 
 def qtrun(filepath, name=''):
     if not os.path.isfile(filepath):

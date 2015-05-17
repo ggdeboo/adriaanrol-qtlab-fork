@@ -22,11 +22,11 @@ import time
 import types
 import numpy
 
-from lib.config import get_config
+from qtlab.source.lib.config import get_config
 config = get_config()
 
 from data import Data
-from lib import namedlist
+from qtlab.source.lib import namedlist
 from qtlab.source.lib.misc import get_dict_keys
 from qtlab.source.lib.network.object_sharer import SharedGObject, cache_result
 

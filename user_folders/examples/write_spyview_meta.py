@@ -3,7 +3,7 @@
 # This example should be run with "execfile('spyview.py')"
 
 from numpy import pi, linspace, sinc, sqrt
-from lib.file_support.spyview import SpyView
+from qtlab.source.lib.file_support.spyview import SpyView
 
 x_vec = linspace(-2 * pi, 2 * pi, 100)
 y_vec = linspace(-2 * pi, 2 * pi, 100)

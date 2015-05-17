@@ -23,8 +23,8 @@ import logging
 
 from gettext import gettext as _L
 import lib.gui as gui
-from lib.gui import dropdowns, qtwindow, qttable
-from lib import databrowser
+from qtlab.source.lib.gui import dropdowns, qtwindow, qttable
+from qtlab.source.lib import databrowser
 
 class DataWindow(qtwindow.QTWindow):
 

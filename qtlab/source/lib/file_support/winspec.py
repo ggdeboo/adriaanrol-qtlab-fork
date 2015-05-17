@@ -16,7 +16,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import numpy as np
-from lib.namedstruct import *
+from qtlab.source.lib.namedstruct import *
 
 class SPEFile:
 

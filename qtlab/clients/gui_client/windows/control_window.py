@@ -22,9 +22,9 @@ from gettext import gettext as _L
 
 from qtlab.source import qtclient as qt
 import lib.gui as gui
-from lib.gui import dropdowns, qtwindow, frontpanel, slider
-from lib.gui.flexscale import FlexScale
-from lib.gui.functionframe import ArgumentTable, FunctionFrame
+from qtlab.source.lib.gui import dropdowns, qtwindow, frontpanel, slider
+from qtlab.source.lib.gui.flexscale import FlexScale
+from qtlab.source.lib.gui.functionframe import ArgumentTable, FunctionFrame
 
 class QTManageInstrumentFrame(gtk.VBox):
 

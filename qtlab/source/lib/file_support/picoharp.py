@@ -19,7 +19,7 @@ import numpy as np
 import struct
 import sys
 
-from lib.namedstruct import *
+from qtlab.source.lib.namedstruct import *
 
 _T2WRAPAROUND = 210698240
 _RESOLUTION = 4e-12
