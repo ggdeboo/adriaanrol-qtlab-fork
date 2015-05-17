@@ -12,7 +12,7 @@ adddir = os.path.join(os.getcwd(), 'source')
 sys.path.insert(0, adddir)
 
 # We should not overwrite the config file set up by client_shared.py
-from lib import config
+from qtlab.source.lib import config
 config = config.get_config()
 
 from qtlab.source.lib.network import object_sharer as objsh
