@@ -1,3 +1,4 @@
+import os
 # This file contains user-specific settings for qtlab.
 # It is run as a regular python script.
 # Do not change the following line unless you know what you are doing
@@ -13,6 +14,8 @@ config.remove([
 # QTLab instance name and port for networked operation
 config['instance_name'] = 'qtlab_n1'
 config['port'] = 12002
+config['qtlab_dir'] = os.path.abspath(os.path.join(
+                                      os.path.dirname(qt.__file__), os.pardir))
 
 # A list of allowed IP ranges for remote connections
 config['allowed_ips'] = (

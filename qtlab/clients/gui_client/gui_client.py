@@ -24,9 +24,9 @@ def setup_windows():
     from windows import main_window
     main_window.Window()
 
-    # winpath = os.path.join(config['execdir'], 'clients/gui_client/windows')
+    winpath = os.path.join(config['qtlab_dir'], 'clients/gui_client/windows')
     # Nees to be a system dependent pythonpath
-    qtlab_dir = '/usr/local/lib/python2.7/site-packages/qtlab'
+    # qtlab_dir = '/usr/local/lib/python2.7/site-packages/qtlab'
     # should add this to the config
     winpath = os.path.join(qtlab_dir, 'clients/gui_client/windows')
 
