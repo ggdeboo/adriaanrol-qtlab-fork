@@ -26,8 +26,16 @@ quite easy. It relies on the IPython shell, with GTK providing the basics
 for the GUI.
 
 ### 1.1. Getting QTLab
-You can get the latest version for QTLab from the git repository, which is
-currently located at http://qtwork.nano.tudelft.nl/cgi-bin/gitweb.cgi.
+Make sure you have the dependencies listed below and install with pip from the github repository
+
+    pip install git+https://github.com/AdriaanRol/qtlab-fork
+
+To run qtlab, go to the folder containing your user files and type:
+
+    ipython -im qtlab
+
+An example set of user files can be found on https://github.com/AdriaanRol/QTLab-UserFolder
+
 
 ### 1.2. Dependencies
 - IPython
@@ -38,8 +46,7 @@ currently located at http://qtwork.nano.tudelft.nl/cgi-bin/gitweb.cgi.
 For a complete list see the INSTALL file in the qtlab folder.
 
 ### 1.3. Contributing
-Please send your contributions, such as new drivers and/or bugfixes to
-Reinier Heeres <reinier@heeres.eu> or <qtlab-users@lists.sourceforge.net>
+Just add a pull request to this repository.
 
 ### 1.4. Supported instruments
 - ADwin gold (windows only)

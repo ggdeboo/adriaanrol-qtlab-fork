@@ -1,5 +1,0 @@
-#!/bin/bash
-
-basedir=$((python -c "import imp; import sys; p=imp.find_module('qtlab')[1]; sys.exit(p)")2>&1)
-python $basedir/clients/client_gtk.py --module gui_client --config gui_client.cfg "$@"
-
